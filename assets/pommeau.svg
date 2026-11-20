@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Pommeau de douche filtrant">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b9c3cc"/><stop offset=".45" stop-color="#ffffff"/><stop offset="1" stop-color="#97a3ae"/>
+    </linearGradient>
+    <linearGradient id="clear" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cfeef3" stop-opacity=".9"/><stop offset=".5" stop-color="#f4fdff" stop-opacity=".7"/><stop offset="1" stop-color="#b5e3ea" stop-opacity=".9"/>
+    </linearGradient>
+  </defs>
+  <!-- tête -->
+  <g transform="rotate(-32 200 200)">
+    <circle cx="200" cy="96" r="78" fill="url(#chrome)" stroke="#8d99a5" stroke-width="2"/>
+    <circle cx="200" cy="96" r="62" fill="#eef3f6"/>
+    <g fill="#9aa6b1">
+      <circle cx="200" cy="96" r="4"/>
+      <circle cx="200" cy="70" r="3.5"/><circle cx="200" cy="122" r="3.5"/><circle cx="174" cy="96" r="3.5"/><circle cx="226" cy="96" r="3.5"/>
+      <circle cx="182" cy="78" r="3.5"/><circle cx="218" cy="78" r="3.5"/><circle cx="182" cy="114" r="3.5"/><circle cx="218" cy="114" r="3.5"/>
+      <circle cx="200" cy="48" r="3"/><circle cx="200" cy="144" r="3"/><circle cx="152" cy="96" r="3"/><circle cx="248" cy="96" r="3"/>
+      <circle cx="166" cy="62" r="3"/><circle cx="234" cy="62" r="3"/><circle cx="166" cy="130" r="3"/><circle cx="234" cy="130" r="3"/>
+    </g>
+    <!-- col -->
+    <rect x="186" y="170" width="28" height="22" fill="url(#chrome)"/>
+    <!-- bouton stop -->
+    <rect x="212" y="176" width="14" height="10" rx="3" fill="#2aa7b8"/>
+    <!-- corps filtre transparent -->
+    <rect x="176" y="190" width="48" height="128" rx="14" fill="url(#clear)" stroke="#8fcbd4" stroke-width="2"/>
+    <!-- billes de filtration -->
+    <g>
+      <rect x="184" y="198" width="32" height="26" rx="6" fill="#f2c94c"/>
+      <rect x="184" y="226" width="32" height="26" rx="6" fill="#4a4f57"/>
+      <rect x="184" y="254" width="32" height="26" rx="6" fill="#d9e3ea"/>
+      <rect x="184" y="282" width="32" height="28" rx="6" fill="#e07a5f"/>
+    </g>
+    <rect x="186" y="318" width="28" height="42" rx="6" fill="url(#chrome)"/>
+    <rect x="190" y="360" width="20" height="16" rx="3" fill="#8d99a5"/>
+  </g>
+  <!-- gouttes -->
+  <g fill="#2aa7b8" opacity=".55">
+    <path d="M70 250c0 8-6 12-10 12s-10-4-10-12 10-20 10-20 10 12 10 20z"/>
+    <path d="M110 300c0 7-5 10-9 10s-9-3-9-10 9-18 9-18 9 11 9 18z"/>
+    <path d="M52 330c0 6-4 9-8 9s-8-3-8-9 8-15 8-15 8 9 8 15z"/>
+  </g>
+</svg>

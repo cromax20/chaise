@@ -3,36 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Posturo Pro — Chaise de bureau ergonomique</title>
-  <meta name="description" content="Posturo Pro : la chaise de bureau ergonomique réglable en 12 points. Support lombaire adaptatif, appui-tête 3D, accoudoirs 4D. Livraison offerte, 30 jours d'essai, garantie 3 ans.">
-  <meta property="og:title" content="Posturo Pro — Dites adieu au mal de dos">
-  <meta property="og:description" content="Le confort d'une chaise à 1 000 €, sans le prix. Livraison offerte & 30 jours d'essai.">
-  <meta property="og:image" content="assets/chair.svg">
-  <link rel="icon" href="assets/chair.svg">
+  <title>Aquavéa — Pommeau de douche filtrant</title>
+  <meta name="description" content="Aquavéa : le pommeau de douche filtrant 15 étapes pensé pour l'eau calcaire belge et française. Moins de chlore, moins de calcaire, une peau et des cheveux plus doux. Test de dureté inclus, 60 jours d'essai.">
+  <meta property="og:title" content="Aquavéa — Votre douche, enfin douce">
+  <meta property="og:description" content="Pommeau filtrant 15 étapes + cartouches + test de dureté. Livraison offerte, 60 jours d'essai.">
+  <meta property="og:image" content="assets/pommeau.svg">
+  <link rel="icon" href="assets/pommeau.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ===== Barre d'annonce ===== -->
   <div class="announce">
     <div class="announce__track">
-      <span>🚚 Livraison offerte en Belgique, France &amp; Pays-Bas</span>
-      <span>⏳ Offre de lancement : <strong data-countdown>--:--:--</strong></span>
-      <span>↩️ 30 jours pour essayer, satisfait ou remboursé</span>
+      <span>🚚 Livraison offerte en Belgique, France &amp; Luxembourg</span>
+      <span>🎁 Offre de lancement : Kit Complet à <strong data-offer-price="complet">--</strong>, encore <strong data-countdown>--</strong></span>
+      <span>💧 60 jours pour essayer, satisfait ou remboursé</span>
     </div>
   </div>
 
-  <!-- ===== Header ===== -->
   <header class="header">
     <div class="container header__inner">
-      <a href="#" class="logo">Posturo<span>.</span></a>
+      <a href="#" class="logo">Aqua<span>véa</span></a>
       <nav class="nav">
-        <a href="#avantages">Avantages</a>
-        <a href="#comparatif">Comparatif</a>
-        <a href="#avis">Avis</a>
+        <a href="#calcaire">Le calcaire chez vous</a>
+        <a href="#economies">Économies</a>
+        <a href="#test">Testez votre eau</a>
         <a href="#faq">FAQ</a>
       </nav>
       <button class="cart-btn" data-open-cart aria-label="Ouvrir le panier">
@@ -43,85 +41,65 @@
   </header>
 
   <main>
-    <!-- ===== Bloc produit (hero) ===== -->
+    <!-- ===================== PRODUIT ===================== -->
     <section class="product container" id="acheter">
       <div class="gallery">
-        <div class="gallery__main" data-gallery-main>
-          <span class="badge badge--sale" data-discount-badge>-38%</span>
-          <img src="assets/chair.svg" alt="Chaise ergonomique Posturo Pro" data-main-img>
+        <div class="gallery__main">
+          <span class="badge" data-badge>-26%</span>
+          <img src="assets/pommeau.svg" alt="Pommeau de douche filtrant Aquavéa" data-main-img>
+          <div class="gallery__chips">
+            <span>15 étapes de filtration</span><span>Haute pression</span><span>Bouton stop</span>
+          </div>
         </div>
         <div class="gallery__thumbs">
-          <button class="thumb is-active" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt=""></button>
-          <button class="thumb" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt="" style="filter:hue-rotate(0) grayscale(1) brightness(1.6)"></button>
-          <button class="thumb" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt="" style="filter:invert(.85)"></button>
-          <button class="thumb thumb--video" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt=""><span>▶</span></button>
+          <!-- Remplacez par vos vraies photos : assets/photo-1.jpg, etc. -->
+          <button class="thumb is-active" data-thumb="assets/pommeau.svg"><img src="assets/pommeau.svg" alt=""></button>
+          <button class="thumb" data-thumb="assets/pommeau.svg"><img src="assets/pommeau.svg" alt=""></button>
+          <button class="thumb" data-thumb="assets/pommeau.svg"><img src="assets/pommeau.svg" alt=""></button>
+          <button class="thumb thumb--video" data-thumb="assets/pommeau.svg"><img src="assets/pommeau.svg" alt=""><span>▶</span></button>
         </div>
       </div>
 
       <div class="buybox">
-        <a href="#avis" class="rating">
+        <a href="#avis" class="rating" data-rating-link hidden>
           <span class="stars">★★★★★</span>
-          <span><strong data-rating>4,8</strong>/5 · <span data-review-count>1 200+</span> avis</span>
+          <span><strong data-rating></strong>/5 · <span data-review-count></span> avis</span>
         </a>
-        <h1>Posturo Pro<br><span>La chaise qui sauve votre dos.</span></h1>
+        <p class="eyebrow">Pensé pour l'eau calcaire 🇧🇪 🇫🇷</p>
+        <h1>Le pommeau filtrant Aquavéa<span>Moins de chlore, moins de calcaire. Une peau et des cheveux qui respirent.</span></h1>
 
         <div class="price">
-          <span class="price__now" data-price>249 €</span>
-          <span class="price__old" data-compare>399 €</span>
-          <span class="price__save" data-save>Économisez 150 €</span>
+          <span class="price__now" data-price>--</span>
+          <span class="price__old" data-compare>--</span>
+          <span class="price__save" data-save>--</span>
         </div>
-        <p class="klarna">ou 3 × <strong data-installment>83,00 €</strong> sans frais avec Klarna</p>
+        <p class="klarna">ou 3 × <strong data-installment>--</strong> sans frais avec Klarna</p>
 
         <ul class="bullets">
-          <li><b>Support lombaire adaptatif</b> qui suit la courbe de votre dos</li>
-          <li><b>Réglable en 12 points</b> : appui-tête 3D, accoudoirs 4D, profondeur d'assise</li>
-          <li><b>Maille respirante</b> : fini le dos qui transpire l'été</li>
-          <li><b>Inclinaison 90°–135°</b> avec blocage, pour vos pauses</li>
+          <li><b>Filtre 15 étapes</b> : réduit le chlore, les sédiments et la rouille</li>
+          <li><b>Billes adoucissantes</b> qui limitent les dépôts de calcaire</li>
+          <li><b>Haute pression, 3 jets</b>, même si votre pression est faible</li>
+          <li><b>Installation en 2 minutes</b>, sans outils, sur tous les flexibles standard</li>
         </ul>
 
         <div class="option">
-          <div class="option__label">Couleur : <strong data-color-name>Noir minuit</strong></div>
-          <div class="swatches">
-            <button class="swatch is-active" style="--c:#1b1e23" data-color="Noir minuit" data-filter="none" aria-label="Noir minuit"></button>
-            <button class="swatch" style="--c:#9aa1aa" data-color="Gris perle" data-filter="grayscale(1) brightness(1.6)" aria-label="Gris perle"></button>
-            <button class="swatch" style="--c:#eceae6" data-color="Blanc nordique" data-filter="invert(.85)" aria-label="Blanc nordique"></button>
-          </div>
+          <div class="option__label">1. Choisissez votre kit</div>
+          <div class="bundles" data-bundles></div>
         </div>
 
         <div class="option">
-          <div class="option__label">Choisissez votre offre</div>
-          <div class="bundles" data-bundles>
-            <label class="bundle">
-              <input type="radio" name="bundle" value="1">
-              <span class="bundle__body">
-                <span class="bundle__title">1 chaise</span>
-                <span class="bundle__sub">Prix de lancement</span>
-              </span>
-              <span class="bundle__price" data-bundle-price="1"></span>
-            </label>
-            <label class="bundle bundle--best">
-              <span class="bundle__tag">Le plus populaire</span>
-              <input type="radio" name="bundle" value="2" checked>
-              <span class="bundle__body">
-                <span class="bundle__title">2 chaises <em>-10% en plus</em></span>
-                <span class="bundle__sub">Idéal maison + bureau / en couple</span>
-              </span>
-              <span class="bundle__price" data-bundle-price="2"></span>
-            </label>
-          </div>
+          <div class="option__label">2. Ne tombez jamais à court de cartouches</div>
+          <label class="sub">
+            <input type="checkbox" data-sub-toggle checked>
+            <span class="sub__body">
+              <span class="sub__title">Abonnement cartouches <em data-sub-saving>-23%</em></span>
+              <span class="sub__text">1 cartouche tous les 3 mois à <b data-sub-price>--</b> au lieu de <s data-cartridge-price>--</s>. <b>Premier envoi dans 3 mois</b>, sans engagement, résiliable en 1 clic.</span>
+            </span>
+          </label>
         </div>
 
-        <div class="stock">
-          <div class="stock__text">🔥 Forte demande : <strong>plus que <span data-stock>17</span> en stock</strong> à ce prix</div>
-          <div class="stock__bar"><span data-stock-bar></span></div>
-        </div>
-
-        <button class="btn btn--primary btn--xl" data-add-to-cart>
-          Ajouter au panier — <span data-cta-price>448 €</span>
-        </button>
-        <button class="btn btn--dark btn--xl" data-buy-now>Acheter maintenant</button>
-
-        <p class="delivery">📦 Commandez maintenant, livré entre le <strong data-eta>--</strong></p>
+        <button class="btn btn--primary btn--xl" data-add-to-cart>Ajouter au panier · <span data-cta-price>--</span></button>
+        <p class="delivery">📦 Livré entre le <strong data-eta>--</strong> · Suivi inclus</p>
 
         <div class="pay-icons" aria-label="Moyens de paiement">
           <span>VISA</span><span>Mastercard</span><span>Bancontact</span><span>PayPal</span><span>Apple Pay</span><span>Klarna</span>
@@ -129,14 +107,14 @@
 
         <div class="mini-trust">
           <div>🚚<span>Livraison<br>offerte</span></div>
-          <div>↩️<span>30 jours<br>d'essai</span></div>
-          <div>🛡️<span>Garantie<br>3 ans</span></div>
+          <div>💧<span>60 jours<br>d'essai</span></div>
+          <div>🧪<span>Test de<br>dureté inclus</span></div>
           <div>🔒<span>Paiement<br>sécurisé</span></div>
         </div>
 
         <details class="acc" open>
-          <summary>Description</summary>
-          <p>Conçue pour les longues journées de télétravail, la Posturo Pro maintient votre colonne dans sa position naturelle grâce à son support lombaire auto-adaptatif et à ses 12 réglages. Son dossier en maille haute densité laisse circuler l'air, et sa base en aluminium supporte jusqu'à 150 kg.</p>
+          <summary>Ce que contient le Kit Complet</summary>
+          <ul class="kit-list" data-kit-list></ul>
         </details>
         <details class="acc">
           <summary>Caractéristiques techniques</summary>
@@ -144,148 +122,271 @@
         </details>
         <details class="acc">
           <summary>Livraison &amp; retours</summary>
-          <p>Expédition sous 24–48 h, livraison suivie offerte. Montage en 10 minutes, outils inclus. Vous avez 30 jours après réception pour la tester : si elle ne vous convient pas, on vous rembourse.</p>
+          <p>Livraison suivie offerte. Vous avez 60 jours après réception pour l'essayer : si vous ne sentez pas la différence, renvoyez-le et on vous rembourse le pommeau.</p>
         </details>
       </div>
     </section>
 
-    <!-- ===== Logos / réassurance ===== -->
-    <section class="press">
-      <div class="container press__inner">
-        <span>Testée et approuvée par des télétravailleurs, développeurs, gamers &amp; étudiants</span>
+    <!-- ===================== BANDEAU ===================== -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <span>💧 15 couches de filtration</span><span>🧪 Test de dureté inclus</span><span>🔁 Abonnement sans engagement</span><span>🔧 Compatible tous flexibles</span>
       </div>
     </section>
 
-    <!-- ===== Problème / agitation ===== -->
+    <!-- ===================== PROBLÈME ===================== -->
     <section class="pain container">
-      <div class="pain__text">
+      <div>
         <p class="eyebrow">Le problème</p>
-        <h2>Vous passez plus de temps assis que vous ne dormez.</h2>
-        <p>8 h par jour sur une chaise mal adaptée, c'est le dos qui s'arrondit, les épaules qui se crispent et la nuque qui tire dès 15 h. Ce n'est pas vous le problème : c'est votre chaise.</p>
+        <h2>Votre eau du robinet n'est pas aussi douce que vous le pensez.</h2>
+        <p class="lead">Dans une grande partie de la Belgique et de la France, l'eau est dure : chargée en calcaire et traitée au chlore. Résultat, chaque douche laisse des traces, sur votre carrelage… et sur vous.</p>
       </div>
-      <div class="pain__stats">
-        <div class="stat"><strong>8 / 10</strong><span>adultes souffriront de mal de dos au cours de leur vie</span></div>
-        <div class="stat"><strong>+9 h</strong><span>passées assis chaque jour en moyenne par un employé de bureau</span></div>
-        <div class="stat"><strong>12</strong><span>points de réglage sur la Posturo Pro pour s'adapter à vous</span></div>
-      </div>
-    </section>
-
-    <!-- ===== Avantages avec points interactifs ===== -->
-    <section class="features" id="avantages">
-      <div class="container">
-        <p class="eyebrow center">La solution</p>
-        <h2 class="center">Chaque détail pensé pour votre posture</h2>
-        <div class="hotspots">
-          <div class="hotspots__img">
-            <img src="assets/chair.svg" alt="Schéma de la chaise">
-            <button class="spot" style="top:7%;left:50%" data-spot="0">1</button>
-            <button class="spot" style="top:28%;left:50%" data-spot="1">2</button>
-            <button class="spot" style="top:46%;left:62%" data-spot="2">3</button>
-            <button class="spot" style="top:51%;left:22%" data-spot="3">4</button>
-            <button class="spot" style="top:66%;left:40%" data-spot="4">5</button>
-            <button class="spot" style="top:91%;left:72%" data-spot="5">6</button>
-          </div>
-          <ol class="hotspots__list" data-spot-list>
-            <li class="is-active"><h3>Appui-tête 3D</h3><p>Hauteur et angle réglables : votre nuque se relâche enfin, même en inclinaison.</p></li>
-            <li><h3>Dossier en maille respirante</h3><p>Maille élastique haute densité qui épouse le dos et évacue la chaleur.</p></li>
-            <li><h3>Support lombaire adaptatif</h3><p>Il suit vos mouvements et maintient la courbe naturelle du bas du dos.</p></li>
-            <li><h3>Accoudoirs 4D</h3><p>Hauteur, profondeur, largeur et rotation : vos épaules restent détendues au clavier.</p></li>
-            <li><h3>Assise coulissante</h3><p>Réglez la profondeur pour soutenir vos cuisses sans couper la circulation.</p></li>
-            <li><h3>Base aluminium &amp; roulettes PU</h3><p>Ultra-stable, supporte 150 kg, roulettes silencieuses qui n'abîment pas le parquet.</p></li>
-          </ol>
+      <div class="vs">
+        <div class="vs__col vs__col--bad">
+          <h3>Sans filtre</h3>
+          <ul>
+            <li>Peau qui tiraille en sortant de la douche</li>
+            <li>Cheveux ternes, rêches, difficiles à coiffer</li>
+            <li>Odeur de chlore</li>
+            <li>Traces blanches sur la paroi et la robinetterie</li>
+            <li>Pommeau qui s'entartre et perd en pression</li>
+          </ul>
+        </div>
+        <div class="vs__col vs__col--good">
+          <h3>Avec Aquavéa</h3>
+          <ul>
+            <li>Une eau plus douce au toucher</li>
+            <li>Des cheveux plus souples et brillants</li>
+            <li>Chlore fortement réduit</li>
+            <li>Moins de dépôts à nettoyer</li>
+            <li>Un jet puissant qui le reste</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== Bénéfices ===== -->
-    <section class="benefits container">
-      <div class="benefit"><span class="benefit__icon">🧘</span><h3>Moins de douleurs</h3><p>Une posture correcte maintenue sans effort, toute la journée.</p></div>
-      <div class="benefit"><span class="benefit__icon">⚡</span><h3>Plus de concentration</h3><p>Quand le corps est bien installé, l'esprit reste sur la tâche.</p></div>
-      <div class="benefit"><span class="benefit__icon">🌬️</span><h3>Toujours au frais</h3><p>La maille laisse respirer : idéal pour les longues sessions d'été.</p></div>
-      <div class="benefit"><span class="benefit__icon">🔧</span><h3>Montée en 10 min</h3><p>Notice illustrée et outils inclus. Aucune compétence requise.</p></div>
+    <!-- ===================== CALCAIRE PAR RÉGION ===================== -->
+    <section class="hardness" id="calcaire">
+      <div class="container">
+        <p class="eyebrow center">Le calcaire près de chez vous</p>
+        <h2 class="center">Quelle est la dureté de l'eau dans votre région ?</h2>
+        <p class="lead center hardness__lead">La dureté se mesure en degrés français (°f). Au-delà de 30 °f, l'eau est considérée comme dure. Et dans beaucoup de villes, on y est.</p>
+        <div class="hardness__wrap">
+          <div class="hardness__list" role="tablist" data-regions></div>
+          <div class="hardness__card" data-region-card></div>
+        </div>
+        <div class="scale">
+          <div class="scale__bar"></div>
+          <div class="scale__labels"><span style="left:0%">0 °f<br><b>Douce</b></span><span style="left:33%">15 °f<br><b>Peu calcaire</b></span><span style="left:44%">20 °f<br><b>Moy. dure</b></span><span style="left:67%">30 °f<br><b>Dure</b></span><span style="left:89%">40 °f<br><b>Très dure</b></span></div>
+        </div>
+        <p class="sources">Valeurs indicatives issues des distributeurs et des analyses publiques ; la dureté varie d'une commune, voire d'une rue à l'autre. Pour la valeur exacte de votre adresse : Vivaqua (Bruxelles), SWDE (Wallonie), De Watergroep (Flandre), ou la base ARS (France). La bandelette du Kit Complet vous la donne en 1 minute.</p>
+      </div>
     </section>
 
-    <!-- ===== Comparatif ===== -->
-    <section class="compare" id="comparatif">
+    <!-- ===================== MÉFAITS ===================== -->
+    <section class="harm container" id="mefaits">
+      <p class="eyebrow center">Ce que l'eau dure vous coûte vraiment</p>
+      <h2 class="center">Le calcaire et le chlore ne s'arrêtent pas à la paroi de douche</h2>
+      <div class="harm__grid">
+        <article class="harm__card">
+          <span class="harm__icon">🧴</span>
+          <h3>Votre peau</h3>
+          <p>Le calcaire réagit avec le savon et laisse un film qui empêche un bon rinçage. Le chlore, lui, dessèche. Résultat : une peau qui tiraille et qui réclame plus de crème. Des études ont aussi associé l'eau dure à un risque plus élevé d'eczéma chez les jeunes enfants.</p>
+        </article>
+        <article class="harm__card">
+          <span class="harm__icon">💇</span>
+          <h3>Vos cheveux</h3>
+          <p>Les minéraux se déposent sur la fibre : cheveux ternes, rêches, plus difficiles à démêler, couleur qui ternit plus vite. Il faut plus de shampoing pour obtenir de la mousse.</p>
+        </article>
+        <article class="harm__card">
+          <span class="harm__icon">🔥</span>
+          <h3>Votre chauffe-eau</h3>
+          <p>Le tartre agit comme un isolant sur la résistance : il faut plus d'énergie pour chauffer la même eau, et l'appareil s'use plus vite.</p>
+        </article>
+        <article class="harm__card">
+          <span class="harm__icon">🧽</span>
+          <h3>Votre salle de bain</h3>
+          <p>Traces blanches, joints qui jaunissent, pommeau qui se bouche et perd en pression : plus de nettoyage, plus de produits, plus de temps.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== CALCULATEUR ===================== -->
+    <section class="calc" id="economies">
+      <div class="container calc__inner">
+        <div>
+          <p class="eyebrow">Calculateur</p>
+          <h2>Combien d'eau part dans votre douche chaque année ?</h2>
+          <p class="calc__intro">Un pommeau classique débite souvent 12 à 20 litres par minute. Avec ses buses haute pression, Aquavéa garde un jet puissant avec moins d'eau.</p>
+          <div class="field">
+            <label for="c-people">Personnes dans le foyer <output data-out="people">2</output></label>
+            <input type="range" id="c-people" min="1" max="6" value="2" data-calc="people">
+          </div>
+          <div class="field">
+            <label for="c-min">Durée moyenne d'une douche <output data-out="min">8 min</output></label>
+            <input type="range" id="c-min" min="3" max="20" value="8" data-calc="min">
+          </div>
+          <div class="field">
+            <label>Débit de votre pommeau actuel</label>
+            <div class="seg" data-calc-flow>
+              <button data-flow="12" class="is-active">≈ 12 L/min<small>récent</small></button>
+              <button data-flow="15">≈ 15 L/min<small>standard</small></button>
+              <button data-flow="18">≈ 18 L/min<small>ancien</small></button>
+            </div>
+            <p class="field__hint">Astuce : remplissez un seau gradué pendant 10 secondes et multipliez par 6.</p>
+          </div>
+          <div class="field">
+            <label>Vous habitez</label>
+            <div class="seg" data-calc-country>
+              <button data-country="BE" class="is-active">🇧🇪 Belgique</button>
+              <button data-country="FR">🇫🇷 France</button>
+            </div>
+          </div>
+        </div>
+        <div class="calc__result">
+          <p class="calc__label">Avec Aquavéa, vous économisez chaque année environ</p>
+          <div class="calc__big"><span data-res="liters">--</span><small>litres d'eau</small></div>
+          <div class="calc__row">
+            <div><strong data-res="water">--</strong><span>sur la facture d'eau</span></div>
+            <div><strong data-res="energy">--</strong><span>sur l'eau chaude</span></div>
+          </div>
+          <div class="calc__total">Soit <strong data-res="total">--</strong> par an. <span data-res="payback"></span></div>
+          <div class="calc__bars">
+            <div><span>Votre pommeau</span><div class="bar"><i data-bar="now"></i></div><b data-res="now">--</b></div>
+            <div><span>Aquavéa</span><div class="bar bar--us"><i data-bar="us"></i></div><b data-res="us">--</b></div>
+          </div>
+          <a href="#acheter" class="btn btn--primary btn--xl">Je commence à économiser</a>
+          <p class="calc__note">Estimation indicative : débit Aquavéa de <span data-res="flow">--</span> L/min, 1 douche par personne et par jour, eau à <span data-res="pw">--</span>/m³ et chauffage de l'eau à <span data-res="pe">--</span>/kWh. Vos économies réelles dépendent de votre installation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== QUIZ ===================== -->
+    <section class="quiz" id="test">
+      <div class="container quiz__inner">
+        <div class="quiz__intro">
+          <p class="eyebrow">Test gratuit · 30 secondes</p>
+          <h2>Votre eau est-elle trop dure ?</h2>
+          <p>Répondez à 5 questions pour savoir si un filtre vous serait utile. La bandelette incluse dans le kit vous donnera ensuite la mesure exacte de la dureté de votre eau.</p>
+        </div>
+        <div class="quiz__card" data-quiz>
+          <div class="quiz__progress"><span data-quiz-bar></span></div>
+          <div data-quiz-body></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMMENT ÇA MARCHE ===================== -->
+    <section class="layers" id="comment">
+      <div class="container">
+        <p class="eyebrow center">Comment ça marche</p>
+        <h2 class="center">15 étapes entre votre robinet et votre peau</h2>
+        <div class="layers__grid">
+          <div class="layer"><span class="dot" style="--c:#d9e3ea"></span><h3>Coton PP &amp; maille inox</h3><p>Retiennent le sable, la rouille et les sédiments.</p></div>
+          <div class="layer"><span class="dot" style="--c:#4a4f57"></span><h3>Charbon actif</h3><p>Réduit le chlore, les odeurs et le goût de piscine.</p></div>
+          <div class="layer"><span class="dot" style="--c:#c98b5b"></span><h3>KDF-55</h3><p>Alliage cuivre-zinc efficace contre le chlore, même en eau chaude.</p></div>
+          <div class="layer"><span class="dot" style="--c:#e07a5f"></span><h3>Résine adoucissante</h3><p>Capte une partie du calcaire pour limiter les dépôts.</p></div>
+          <div class="layer"><span class="dot" style="--c:#f2c94c"></span><h3>Vitamine C &amp; sulfite de calcium</h3><p>Neutralisent le chlore résiduel pour une eau plus douce.</p></div>
+          <div class="layer"><span class="dot" style="--c:#7fc8a9"></span><h3>Billes minérales</h3><p>Pierres de tourmaline et céramique pour finir la filtration.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== INSTALLATION ===================== -->
+    <section class="steps container">
+      <p class="eyebrow center">Installation</p>
+      <h2 class="center">Prêt en 2 minutes. Sans outils.</h2>
+      <div class="steps__grid">
+        <div class="step"><span>1</span><h3>Dévissez</h3><p>Retirez votre ancien pommeau à la main.</p></div>
+        <div class="step"><span>2</span><h3>Vissez</h3><p>Ajoutez le ruban téflon fourni et vissez Aquavéa sur votre flexible standard 1/2".</p></div>
+        <div class="step"><span>3</span><h3>Profitez</h3><p>Laissez couler 1 minute à l'eau froide, puis place à votre première vraie douche douce.</p></div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPARATIF ===================== -->
+    <section class="compare">
       <div class="container">
         <p class="eyebrow center">Comparatif</p>
-        <h2 class="center">Le confort d'une chaise à 1 000 €.<br>Sans le prix.</h2>
+        <h2 class="center">La solution la plus simple contre l'eau dure</h2>
         <div class="table-wrap">
           <table class="compare__table">
-            <thead>
-              <tr><th></th><th class="us">Posturo Pro</th><th>Chaise de bureau standard</th><th>Chaise ergonomique haut de gamme</th></tr>
-            </thead>
+            <thead><tr><th></th><th class="us">Aquavéa</th><th>Pommeau classique</th><th>Adoucisseur pour toute la maison</th></tr></thead>
             <tbody>
-              <tr><td>Support lombaire adaptatif</td><td class="us">✔</td><td>✘</td><td>✔</td></tr>
-              <tr><td>Appui-tête réglable</td><td class="us">✔ 3D</td><td>✘</td><td>En option</td></tr>
-              <tr><td>Accoudoirs réglables</td><td class="us">✔ 4D</td><td>Fixes</td><td>✔</td></tr>
-              <tr><td>Dossier respirant</td><td class="us">✔</td><td>Simili-cuir</td><td>✔</td></tr>
-              <tr><td>Essai gratuit</td><td class="us">30 jours</td><td>✘</td><td>Variable</td></tr>
-              <tr><td>Garantie</td><td class="us">3 ans</td><td>1 an</td><td>5–12 ans</td></tr>
-              <tr class="row-price"><td>Prix</td><td class="us" data-price-cell>249 €</td><td>80–150 €</td><td>800–1 500 €</td></tr>
+              <tr><td>Réduit le chlore</td><td class="us">✔</td><td>✘</td><td>Selon le modèle</td></tr>
+              <tr><td>Limite le calcaire</td><td class="us">✔ Partiellement</td><td>✘</td><td>✔ Totalement</td></tr>
+              <tr><td>Installation</td><td class="us">2 min, sans outils</td><td>2 min</td><td>Plombier, plusieurs heures</td></tr>
+              <tr><td>Locataire ? Possible</td><td class="us">✔</td><td>✔</td><td>✘ Rarement</td></tr>
+              <tr><td>Test de dureté inclus</td><td class="us">✔</td><td>✘</td><td>✔</td></tr>
+              <tr class="row-price"><td>Prix</td><td class="us" data-offer-price="complet">--</td><td>15–40 €</td><td>1 000–3 000 €</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="center"><a href="#acheter" class="btn btn--primary">Je choisis la Posturo Pro</a></div>
+        <div class="center"><a href="#acheter" class="btn btn--primary">Je choisis Aquavéa</a></div>
       </div>
     </section>
 
-    <!-- ===== Avis ===== -->
-    <!--
-      ⚠️ AVIS D'EXEMPLE : remplacez-les par de vrais avis clients (Judge.me, Loox, Trustpilot,
-      ou avis importés de la fiche fournisseur) AVANT la mise en ligne. Publier de faux avis est
-      interdit dans l'UE (directive Omnibus). Voir README.md.
-    -->
-    <section class="reviews container" id="avis">
+    <!-- ===================== ABONNEMENT ===================== -->
+    <section class="subscribe container" id="abonnement">
+      <div class="subscribe__text">
+        <p class="eyebrow">Abonnement cartouches</p>
+        <h2>Un filtre usé ne filtre plus. On s'en occupe pour vous.</h2>
+        <p class="lead">Une cartouche dure environ 2 à 3 mois selon la dureté de votre eau et l'usage. Avec l'abonnement, la suivante arrive chez vous au bon moment, à prix réduit.</p>
+        <ul class="bullets">
+          <li><b><span data-sub-price>--</span> la cartouche</b> au lieu de <span data-cartridge-price>--</span></li>
+          <li><b>Livraison offerte</b> à chaque envoi</li>
+          <li><b>Sans engagement</b> : pause, décalage ou résiliation en 1 clic</li>
+          <li>Un <b>e-mail de rappel</b> 5 jours avant chaque envoi</li>
+        </ul>
+        <a href="#acheter" class="btn btn--primary">Commencer avec le Kit Complet</a>
+      </div>
+      <div class="cartridges">
+        <div class="cartridge cartridge--new"><div class="cartridge__body"></div><span>Cartouche neuve</span></div>
+        <div class="cartridge cartridge--used"><div class="cartridge__body"></div><span>Après 3 mois*</span></div>
+        <p class="cartridges__note">*Illustration. Remplacez par vos propres photos avant / après : c'est la preuve qui convertit le mieux.</p>
+      </div>
+    </section>
+
+    <!-- ===================== AVIS (masqué tant que CONFIG.reviews est vide) ===================== -->
+    <section class="reviews container" id="avis" data-reviews-section hidden>
       <p class="eyebrow center">Avis clients</p>
-      <h2 class="center">Ils ont dit adieu au mal de dos</h2>
-      <div class="reviews__summary">
-        <div class="reviews__score">
-          <strong data-rating>4,8</strong>
-          <span class="stars">★★★★★</span>
-          <span>Basé sur <span data-review-count>1 200+</span> avis</span>
-        </div>
-        <div class="reviews__bars" data-review-bars></div>
-      </div>
+      <h2 class="center">Ils ont sauté le pas</h2>
       <div class="reviews__grid" data-reviews></div>
-      <div class="center"><button class="btn btn--ghost" data-more-reviews>Voir plus d'avis</button></div>
     </section>
 
-    <!-- ===== Garantie ===== -->
+    <!-- ===================== GARANTIE ===================== -->
     <section class="guarantee">
       <div class="container guarantee__inner">
-        <div class="seal"><strong>30</strong><span>JOURS<br>D'ESSAI</span></div>
+        <div class="seal"><strong>60</strong><span>JOURS<br>D'ESSAI</span></div>
         <div>
-          <h2>Essayez-la pendant 30 jours. Sans risque.</h2>
-          <p>Asseyez-vous dessus, travaillez, jouez, faites la sieste. Si votre dos ne vous dit pas merci, renvoyez-la : nous vous remboursons intégralement. Simple comme ça.</p>
-          <a href="#acheter" class="btn btn--primary">Profiter de l'offre</a>
+          <h2>Sentez la différence, ou on vous rembourse.</h2>
+          <p>Prenez 60 jours pour l'essayer. Si votre peau et vos cheveux ne sentent pas la différence, écrivez-nous : on vous rembourse le pommeau. Sans justification.</p>
+          <a href="#acheter" class="btn btn--primary">J'essaie sans risque</a>
         </div>
       </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
+    <!-- ===================== FAQ ===================== -->
     <section class="faq container" id="faq">
       <p class="eyebrow center">FAQ</p>
-      <h2 class="center">Vos questions, nos réponses</h2>
+      <h2 class="center">Vos questions, nos réponses honnêtes</h2>
       <div class="faq__list">
-        <details class="acc"><summary>Quels sont les délais de livraison ?</summary><p>Les commandes sont expédiées sous 24–48 h. Comptez 5 à 10 jours ouvrés pour la Belgique, la France et les Pays-Bas. Vous recevez un numéro de suivi par e-mail.</p></details>
-        <details class="acc"><summary>Est-ce difficile à monter ?</summary><p>Non : environ 10 minutes avec la notice illustrée et les outils fournis.</p></details>
-        <details class="acc"><summary>Pour quelle taille est-elle adaptée ?</summary><p>De 1,55 m à 1,95 m environ, jusqu'à 150 kg, grâce à la hauteur d'assise, la profondeur et l'appui-tête réglables.</p></details>
-        <details class="acc"><summary>Et si elle ne me convient pas ?</summary><p>Vous disposez de 30 jours après réception pour nous la retourner et être remboursé. Contactez simplement notre service client.</p></details>
-        <details class="acc"><summary>Les roulettes abîment-elles le parquet ?</summary><p>Non, elles sont en polyuréthane (PU) souple et silencieuses, adaptées au parquet, carrelage et moquette.</p></details>
-        <details class="acc"><summary>Quels moyens de paiement acceptez-vous ?</summary><p>Carte bancaire, Bancontact, PayPal, Apple Pay et Klarna (paiement en 3 fois sans frais). Paiement 100 % sécurisé.</p></details>
+        <details class="acc"><summary>Est-ce que ça enlève 100 % du calcaire ?</summary><p>Non, et méfiez-vous de ceux qui le promettent. Seul un adoucisseur installé sur toute la maison retire tout le calcaire. Aquavéa réduit fortement le chlore et limite une partie du calcaire grâce à sa résine. Plus votre eau est dure, plus il faut changer la cartouche souvent.</p></details>
+        <details class="acc"><summary>Est-ce compatible avec ma douche ?</summary><p>Oui si votre flexible a un raccord standard 1/2" (G1/2), ce qui est le cas de la quasi-totalité des douches en Belgique et en France. Un flexible est aussi inclus dans le Kit Complet si le vôtre est abîmé.</p></details>
+        <details class="acc"><summary>Combien de temps dure une cartouche ?</summary><p>Environ 2 à 3 mois pour un foyer de 2 personnes, selon la dureté de l'eau. Quand l'eau sort moins vite ou que l'odeur de chlore revient, c'est le moment de la changer.</p></details>
+        <details class="acc"><summary>Est-ce que la pression baisse ?</summary><p>Non. La tête haute pression est conçue pour compenser la filtration, et le bouton stop permet de couper l'eau pendant que vous vous savonnez.</p></details>
+        <details class="acc"><summary>Comment fonctionne l'abonnement ?</summary><p>Vous recevez 1 cartouche tous les 3 mois, la première 3 mois après votre commande. Vous pouvez mettre en pause, décaler ou résilier à tout moment depuis votre compte ou par e-mail.</p></details>
+        <details class="acc"><summary>Quels sont les délais de livraison ?</summary><p>Comptez 5 à 10 jours ouvrés en Belgique, en France et au Luxembourg. Vous recevez un lien de suivi par e-mail dès l'expédition.</p></details>
       </div>
     </section>
 
-    <!-- ===== CTA final ===== -->
     <section class="final">
       <div class="container final__inner">
-        <img src="assets/chair.svg" alt="">
+        <img src="assets/pommeau.svg" alt="">
         <div>
-          <h2>Votre dos vous remerciera dès demain.</h2>
-          <p>Offre de lancement à <strong data-price>249 €</strong> au lieu de <s data-compare>399 €</s>, valable encore <strong data-countdown>--:--:--</strong>.</p>
-          <a href="#acheter" class="btn btn--primary btn--xl">Je commande ma Posturo Pro</a>
-          <p class="final__small">🚚 Livraison offerte · ↩️ 30 jours d'essai · 🛡️ Garantie 3 ans</p>
+          <h2>Dès demain matin, une douche qui fait du bien.</h2>
+          <p>Kit Complet à <strong data-offer-price="complet">--</strong> au lieu de <s data-offer-value="complet">--</s>, offre valable encore <strong data-countdown>--</strong>.</p>
+          <a href="#acheter" class="btn btn--primary btn--xl">Je commande mon kit</a>
+          <p class="final__small">🚚 Livraison offerte · 💧 60 jours d'essai · 🧪 Test de dureté inclus</p>
         </div>
       </div>
     </section>
@@ -293,63 +394,42 @@
 
   <footer class="footer">
     <div class="container footer__inner">
+      <div><a href="#" class="logo logo--light">Aqua<span>véa</span></a><p>Une douche plus douce, pour toute la famille.</p></div>
+      <div><h4>Aide</h4><a href="#faq">FAQ</a><a href="mailto:contact@exemple.com">Contact</a><a href="#">Suivre ma commande</a><a href="#">Gérer mon abonnement</a></div>
+      <div><h4>Légal</h4><a href="#">Conditions générales de vente</a><a href="#">Droit de rétractation</a><a href="#">Confidentialité</a><a href="#">Mentions légales</a></div>
       <div>
-        <a href="#" class="logo logo--light">Posturo<span>.</span></a>
-        <p>L'ergonomie haut de gamme, accessible à tous.</p>
-      </div>
-      <div>
-        <h4>Aide</h4>
-        <a href="#faq">FAQ</a><a href="mailto:contact@exemple.com">Contact</a><a href="#">Suivre ma commande</a>
-      </div>
-      <div>
-        <h4>Légal</h4>
-        <a href="#">Conditions générales de vente</a><a href="#">Politique de retour</a><a href="#">Confidentialité</a><a href="#">Mentions légales</a>
-      </div>
-      <div>
-        <h4>Newsletter</h4>
-        <p>-10 % sur votre première commande.</p>
-        <form class="newsletter" data-newsletter>
-          <input type="email" placeholder="Votre e-mail" required>
-          <button class="btn btn--primary">OK</button>
-        </form>
+        <h4>Newsletter</h4><p>-10 % sur votre première commande.</p>
+        <form class="newsletter" data-newsletter><input type="email" placeholder="Votre e-mail" required><button class="btn btn--primary">OK</button></form>
       </div>
     </div>
-    <p class="footer__copy">© <span data-year></span> Posturo. Tous droits réservés.</p>
+    <p class="footer__copy">© <span data-year></span> Aquavéa. Tous droits réservés.</p>
   </footer>
 
-  <!-- ===== Barre d'achat collante (mobile & scroll) ===== -->
   <div class="sticky-buy" data-sticky>
-    <img src="assets/chair.svg" alt="">
-    <div class="sticky-buy__info">
-      <strong>Posturo Pro</strong>
-      <span><span data-price>249 €</span> <s data-compare>399 €</s></span>
-    </div>
-    <button class="btn btn--primary" data-add-to-cart>Ajouter au panier</button>
+    <img src="assets/pommeau.svg" alt="">
+    <div class="sticky-buy__info"><strong>Kit Complet</strong><span><span data-offer-price="complet">--</span> <s data-offer-value="complet">--</s></span></div>
+    <a href="#acheter" class="btn btn--primary">Choisir mon kit</a>
   </div>
 
-  <!-- ===== Panier latéral ===== -->
   <div class="overlay" data-overlay></div>
   <aside class="drawer" data-drawer aria-label="Panier">
-    <div class="drawer__head">
-      <h3>Votre panier</h3>
-      <button data-close-cart aria-label="Fermer">✕</button>
-    </div>
-    <div class="drawer__ship" data-ship-msg></div>
+    <div class="drawer__head"><h3>Votre panier</h3><button data-close-cart aria-label="Fermer">✕</button></div>
+    <div class="drawer__ship">🎉 Livraison offerte sur votre commande</div>
     <div class="drawer__items" data-cart-items></div>
-    <div class="upsell" data-upsell>
-      <img src="assets/chair.svg" alt="">
-      <div><strong>Repose-pieds ergonomique</strong><span>Complète la posture parfaite · <b data-upsell-price>29 €</b></span></div>
+    <div class="upsell" data-upsell hidden>
+      <img src="assets/pommeau.svg" alt="">
+      <div><strong>Cartouche supplémentaire</strong><span>Pour être tranquille plus longtemps · <b data-cartridge-price>--</b></span></div>
       <button class="btn btn--small" data-add-upsell>+ Ajouter</button>
     </div>
     <div class="drawer__foot">
-      <div class="drawer__total"><span>Total</span><strong data-cart-total>0 €</strong></div>
+      <div class="drawer__total"><span>Total aujourd'hui</span><strong data-cart-total>0 €</strong></div>
+      <p class="drawer__subnote" data-cart-subnote></p>
       <button class="btn btn--primary btn--xl" data-checkout>Commander en toute sécurité 🔒</button>
-      <p class="drawer__note">Livraison offerte · Paiement sécurisé · 30 jours d'essai</p>
+      <p class="drawer__note">Livraison offerte · Paiement sécurisé · 60 jours d'essai</p>
     </div>
   </aside>
 
   <div class="toast" data-toast></div>
-
   <script src="script.js"></script>
 </body>
 </html>
