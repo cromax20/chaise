@@ -38,7 +38,8 @@ Pour le gérer : Shopify avec une app d'abonnement (Recharge, Seal, Appstle…),
 - **Compte à rebours** : `CONFIG.promoEnd` doit correspondre à une vraie fin d'offre.
 - **Allégations** : restez sur « réduit le chlore » et « limite le calcaire ». Pas de promesse médicale, et ne dites pas « élimine 100 % du calcaire » (c'est faux pour un filtre de douche).
 - **Calculateur** : mettez le débit réel du pommeau dans `CONFIG.calc.flowUs`.
-- Remplacez `assets/pommeau.svg` et les vignettes par de vraies photos et une vidéo, notamment une photo avant / après d'une cartouche usée.
+- Les visuels (`assets/pommeau.svg`, `douche.svg`, `kit.svg`, `coupe.svg`) sont des illustrations. Remplacez-les par vos vraies photos dès réception des échantillons, en gardant les mêmes noms ou en changeant les chemins dans `index.html`. La simulation de douche dessine l'eau par-dessus `douche.svg` : si vous remplacez cette image, ajustez la position du pommeau dans `SCENE.head` (`script.js`).
+- La simulation et l'avant / après sont des illustrations : gardez la mention « illustratif » et ne présentez pas ces rendus comme des photos réelles.
 - Renseignez `CONFIG.checkoutUrl` avec votre lien Shopify ou Stripe, ainsi que les pages légales (CGV, rétractation, mentions légales).
 
 ## Sources des données

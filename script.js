@@ -100,6 +100,7 @@ function renderPrices() {
   const complet = offerById('complet');
   $$('[data-offer-price="complet"]').forEach(e => e.textContent = eur(complet.price));
   $$('[data-offer-value="complet"]').forEach(e => e.textContent = eur(offerValue(complet)));
+  $$('[data-offer-badge]').forEach(e => e.textContent = `-${Math.round((1 - complet.price / offerValue(complet)) * 100)}%`);
   $$('[data-sub-price]').forEach(e => e.textContent = eur(CONFIG.subPrice));
   $$('[data-cartridge-price]').forEach(e => e.textContent = eur(CONFIG.unit.cartridge));
   $('[data-sub-saving]').textContent = `-${Math.round((1 - CONFIG.subPrice / CONFIG.unit.cartridge) * 100)}%`;
@@ -127,9 +128,12 @@ function renderContent() {
 /* ---------- Galerie ---------- */
 function initGallery() {
   const main = $('[data-main-img]');
+  const cap = $('[data-gallery-caption]');
   $$('[data-thumb]').forEach(t => t.addEventListener('click', () => {
     $$('[data-thumb]').forEach(x => x.classList.remove('is-active'));
     t.classList.add('is-active'); main.src = t.dataset.thumb;
+    main.parentElement.classList.toggle('is-cover', 'cover' in t.dataset);
+    cap.innerHTML = (t.dataset.caption || '').split('|').map(s => `<span>${s}</span>`).join('');
   }));
 }
 
@@ -143,6 +147,8 @@ function initTiming() {
     const m = String(Math.floor(d % 36e5 / 6e4)).padStart(2, '0');
     const s = String(Math.floor(d % 6e4 / 1e3)).padStart(2, '0');
     $$('[data-countdown]').forEach(e => e.textContent = (days ? `${days}j ` : '') + `${h}:${m}:${s}`);
+    const cd = { d: String(days).padStart(2, '0'), h, m, s };
+    Object.entries(cd).forEach(([k, v]) => { const el = $(`[data-cd-${k}]`); if (el) el.textContent = v; });
   };
   tick(); setInterval(tick, 1000);
   const addBD = (n) => { const d = new Date(); while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) n--; } return d; };
@@ -326,4 +332,207 @@ function initMisc() {
   $('[data-newsletter]').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); toast('Merci ! Votre code -10 % arrive par e-mail.'); });
 }
 
-renderOffers(); renderPrices(); renderContent(); initGallery(); initTiming(); initRegions(); initCalc(); initQuiz(); initCart(); initMisc();
+/* =========================================================
+   SIMULATION DE DOUCHE (canvas par-dessus assets/douche.svg)
+   Coordonnées dans le repère 800×600 de l'image.
+   ========================================================= */
+const SCENE = { w: 800, h: 600, head: { x: 570, y: 180, rx: 46, ry: 18, rot: -38 }, floor: 532, glass: { x: 44, y: 26, w: 232, h: 500 } };
+const MODES = {
+  classic: { spawn: 15, speed: [6, 8], spread: 15, chlore: 0.1, calc: 0.06, flow: 12 },
+  aquavea: { spawn: 10, speed: [9, 11.5], spread: 7, chlore: 0.008, calc: 0.025, flow: 8 },
+};
+function seeded(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+
+class ShowerScene {
+  constructor(el, opts = {}) {
+    this.el = el; this.cv = $('canvas', el); this.ctx = this.cv.getContext('2d');
+    this.mode = opts.mode || 'aquavea'; this.weeks = opts.weeks || 0; this.on = true;
+    this.parts = []; this.steam = []; this.visible = true;
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.glassLayer = document.createElement('canvas');
+    new ResizeObserver(() => this.resize()).observe(el);
+    new IntersectionObserver(([e]) => { this.visible = e.isIntersecting; if (this.visible) this.loop(); }).observe(el);
+    this.resize();
+  }
+  resize() {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    const w = this.el.clientWidth, h = this.el.clientHeight;
+    this.cv.width = w * dpr; this.cv.height = h * dpr;
+    // l'image est en object-fit: cover → calcule l'échelle et le décalage
+    this.k = Math.max(w / SCENE.w, h / SCENE.h) * dpr;
+    this.ox = (w * dpr - SCENE.w * this.k) / 2; this.oy = (h * dpr - SCENE.h * this.k) / 2;
+    this.glassLayer.width = this.cv.width; this.glassLayer.height = this.cv.height;
+    this.drawGlass();
+  }
+  setMode(m) { this.mode = m; this.drawGlass(); }
+  setWeeks(w) { this.weeks = w; this.drawGlass(); }
+  drawGlass() {
+    const c = this.glassLayer.getContext('2d'), g = SCENE.glass;
+    c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, this.glassLayer.width, this.glassLayer.height);
+    c.setTransform(this.k, 0, 0, this.k, this.ox, this.oy);
+    const rnd = seeded(42), n = Math.round(this.weeks * 55 * (this.mode === 'classic' ? 1 : 0.35));
+    for (let i = 0; i < n; i++) {
+      const x = g.x + rnd() * g.w, y = g.y + g.h * (0.25 + 0.75 * Math.sqrt(rnd())), r = 1 + rnd() * 4.5;
+      const grd = c.createRadialGradient(x, y, 0, x, y, r);
+      grd.addColorStop(0, 'rgba(255,255,255,.15)'); grd.addColorStop(.7, 'rgba(255,255,255,.55)'); grd.addColorStop(1, 'rgba(170,180,185,.6)');
+      c.fillStyle = grd; c.beginPath(); c.ellipse(x, y, r, r * (0.8 + rnd() * 0.3), 0, 0, 7); c.fill();
+      if (rnd() < 0.06) { c.strokeStyle = 'rgba(255,255,255,.35)'; c.lineWidth = 1.2; c.beginPath(); c.moveTo(x, y); c.lineTo(x + (rnd() - .5) * 3, y + 15 + rnd() * 40); c.stroke(); }
+    }
+    if (n > 0) { c.fillStyle = `rgba(235,240,240,${Math.min(.22, n / 3000)})`; c.fillRect(g.x, g.y + g.h * .55, g.w, g.h * .45); }
+  }
+  spawn() {
+    const m = MODES[this.mode], h = SCENE.head, a = h.rot * Math.PI / 180;
+    for (let i = 0; i < m.spawn; i++) {
+      const u = (Math.random() * 2 - 1), v = (Math.random() * 2 - 1) * 0.6;
+      const x = h.x + u * h.rx * Math.cos(a) - v * h.ry * Math.sin(a);
+      const y = h.y + u * h.rx * Math.sin(a) + v * h.ry * Math.cos(a);
+      const ang = (108 + (Math.random() * 2 - 1) * m.spread + u * 6) * Math.PI / 180;
+      const sp = m.speed[0] + Math.random() * (m.speed[1] - m.speed[0]);
+      const r = Math.random();
+      const type = r < m.chlore ? 'chlore' : r < m.chlore + m.calc ? 'calc' : 'water';
+      this.parts.push({ x, y, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, type, life: 1, splash: false });
+    }
+  }
+  step() {
+    if (this.on) this.spawn();
+    const fl = SCENE.floor;
+    for (const p of this.parts) {
+      p.vy += p.splash ? 0.35 : 0.22; p.x += p.vx; p.y += p.vy;
+      if (p.splash) p.life -= 0.06;
+      else if (p.y > fl) {
+        p.life = 0;
+        if (Math.random() < 0.35) this.parts.push({ x: p.x, y: fl - 1, vx: (Math.random() - .5) * 4, vy: -1.5 - Math.random() * 2.5, type: 'water', life: 1, splash: true });
+        if (this.on && Math.random() < 0.01 && this.steam.length < 26) this.steam.push({ x: p.x + (Math.random() - .5) * 80, y: fl - 10, r: 30 + Math.random() * 40, a: 0 });
+      }
+    }
+    this.parts = this.parts.filter(p => p.life > 0 && p.x > -20 && p.x < SCENE.w + 20);
+    for (const s of this.steam) { s.y -= 0.5; s.x += 0.15; s.a = Math.min(0.08, s.a + 0.002); s.r += 0.15; }
+    this.steam = this.steam.filter(s => s.y > 60);
+  }
+  draw() {
+    const c = this.ctx;
+    c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, this.cv.width, this.cv.height);
+    c.drawImage(this.glassLayer, 0, 0);
+    c.setTransform(this.k, 0, 0, this.k, this.ox, this.oy);
+    for (const s of this.steam) { c.fillStyle = `rgba(255,255,255,${s.a})`; c.beginPath(); c.arc(s.x, s.y, s.r, 0, 7); c.fill(); }
+    c.lineCap = 'round';
+    for (const p of this.parts) {
+      if (p.type === 'water') {
+        c.strokeStyle = p.splash ? `rgba(190,230,238,${p.life * .8})` : (this.mode === 'aquavea' ? 'rgba(170,228,240,.75)' : 'rgba(190,215,220,.6)');
+        c.lineWidth = p.splash ? 1.4 : 1.6;
+        c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(p.x - p.vx * 1.6, p.y - p.vy * 1.6); c.stroke();
+      } else {
+        c.fillStyle = p.type === 'chlore' ? 'rgba(124,196,72,.95)' : 'rgba(255,255,255,.98)';
+        c.strokeStyle = p.type === 'chlore' ? 'rgba(70,130,40,.9)' : 'rgba(120,130,135,.9)';
+        c.lineWidth = 1; c.beginPath(); c.arc(p.x, p.y, p.type === 'chlore' ? 3 : 2.6, 0, 7); c.fill(); c.stroke();
+      }
+    }
+  }
+  loop() {
+    if (this._raf || !this.visible) return;
+    const tick = () => {
+      this._raf = null;
+      if (!this.visible) return;
+      this.step(); this.draw();
+      if (this.reduced && this.parts.length > 400) return; // une image fixe suffit
+      this._raf = requestAnimationFrame(tick);
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+}
+
+function initSim() {
+  new ShowerScene($('[data-scene="hero"]'), { mode: 'aquavea' });
+  const sim = new ShowerScene($('[data-scene="sim"]'), { mode: 'aquavea', weeks: 4 });
+  const C = CONFIG.calc, perM3 = C.waterPrice.BE + C.kwhPerM3 * C.energyPrice.BE, hardness = 0.35; // g/L à 35 °f
+  MODES.aquavea.flow = C.flowUs;
+  $('[data-sim-flow-us]').textContent = C.flowUs; $('[data-sim-flow-classic]').textContent = MODES.classic.flow;
+  const max = { liters: 20 * 8, cost: 20 * 8 / 1000 * perM3, calc: 20 * 8 * hardness };
+  const set = (k, txt, pct) => { $(`[data-sim="${k}"]`).textContent = txt; const b = $(`[data-simbar="${k}"]`); if (b) b.style.width = Math.min(100, pct) + '%'; };
+  const reset = () => { set('liters', '0 L', 0); set('cost', eur(0), 0); set('calc', '0 g', 0); set('chlore', '—', 0); $('[data-sim-clock]').textContent = '0:00'; };
+  let run = null;
+  $$('[data-sim-mode] button').forEach(b => b.addEventListener('click', () => {
+    $$('[data-sim-mode] button').forEach(x => x.classList.remove('is-active')); b.classList.add('is-active');
+    sim.setMode(b.dataset.mode); if (run) { cancelAnimationFrame(run); run = null; } reset();
+    $('[data-sim-run]').textContent = '▶ Lancer une douche de 8 min';
+  }));
+  const weeks = $('[data-sim-weeks]');
+  weeks.addEventListener('input', () => {
+    const w = +weeks.value; sim.setWeeks(w);
+    $('[data-sim-weeks-out]').textContent = w === 0 ? 'nettoyage' : `${w} semaine${w > 1 ? 's' : ''}`;
+  });
+  $('[data-sim-run]').addEventListener('click', (e) => {
+    if (run) return;
+    const mode = sim.mode, flow = MODES[mode].flow, t0 = performance.now(), btn = e.currentTarget;
+    btn.textContent = '⏳ Douche en cours…';
+    set('chlore', mode === 'classic' ? 'Élevé' : 'Fortement réduit', mode === 'classic' ? 100 : 12);
+    const frame = (now) => {
+      const min = Math.min(8, (now - t0) / 1000), L = flow * min;
+      set('liters', `${Math.round(L)} L`, L / max.liters * 100);
+      set('cost', eur(Math.round(L / 1000 * perM3 * 100) / 100), L / 1000 * perM3 / max.cost * 100);
+      set('calc', `${(L * hardness).toFixed(1).replace('.', ',')} g`, L * hardness / max.calc * 100);
+      $('[data-sim-clock]').textContent = `${Math.floor(min)}:${String(Math.floor(min % 1 * 60)).padStart(2, '0')}`;
+      if (min < 8) { run = requestAnimationFrame(frame); return; }
+      run = null; btn.textContent = '↻ Relancer la douche';
+      $(`[data-cmp="${mode}-l"]`).textContent = `${Math.round(L)} L`;
+      $(`[data-cmp="${mode}-c"]`).textContent = eur(Math.round(L / 1000 * perM3 * 100) / 100);
+      const other = mode === 'classic' ? 'aquavea' : 'classic';
+      if ($(`[data-cmp="${other}-l"]`).textContent === '—') toast(`Essayez maintenant en mode « ${other === 'classic' ? 'Pommeau classique' : 'Aquavéa'} » pour comparer`);
+    };
+    run = requestAnimationFrame(frame);
+  });
+  reset();
+}
+
+/* ---------- Avant / Après ---------- */
+function baSVG(kind, dirty) {
+  const rnd = seeded(dirty ? 7 : 11);
+  if (kind === 'glass') {
+    let spots = '';
+    const n = dirty ? 900 : 160;
+    for (let i = 0; i < n; i++) {
+      const x = rnd() * 1000, y = 500 * (0.15 + 0.85 * Math.sqrt(rnd())), r = 1.5 + rnd() * (dirty ? 7 : 4);
+      spots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="url(#sp)"/>`;
+      if (dirty && rnd() < 0.05) spots += `<path d="M${x} ${y} q ${(rnd() - .5) * 6} 30 ${(rnd() - .5) * 4} ${40 + rnd() * 60}" stroke="rgba(255,255,255,.45)" stroke-width="2" fill="none"/>`;
+    }
+    return `<svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs>
+      <pattern id="t${dirty}" width="100" height="50" patternUnits="userSpaceOnUse"><rect width="100" height="50" fill="#e9e6e0"/><rect x="2" y="2" width="96" height="21" rx="2" fill="#f6f4f0"/><rect x="-48" y="27" width="96" height="21" rx="2" fill="#f3f1ec"/><rect x="52" y="27" width="96" height="21" rx="2" fill="#f6f4f0"/></pattern>
+      <radialGradient id="sp"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".75" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#9aa5ab" stop-opacity=".7"/></radialGradient>
+      <linearGradient id="gl${dirty}" x1="0" x2="1"><stop offset="0" stop-color="#bfe6ec" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#a6dbe3" stop-opacity=".45"/></linearGradient></defs>
+      <rect width="1000" height="500" fill="url(#t${dirty})"/><rect width="1000" height="500" fill="url(#gl${dirty})"/>
+      ${dirty ? '<rect y="260" width="1000" height="240" fill="#f2f4f4" opacity=".35"/>' : '<path d="M80 0 L220 0 L60 500 L-80 500Z" fill="#fff" opacity=".25"/>'}
+      ${spots}</svg>`;
+  }
+  let nubs = '';
+  const rings = [[0, 1], [55, 8], [110, 16], [165, 24], [215, 30]];
+  for (const [rr, n] of rings) for (let k = 0; k < n; k++) {
+    const a = 2 * Math.PI * k / n + rr, x = 500 + rr * Math.cos(a), y = 250 + rr * Math.sin(a) * 0.95;
+    const blocked = dirty && rnd() < 0.45;
+    nubs += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="11" fill="url(#nb)"/>`;
+    nubs += blocked ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(9 + rnd() * 9).toFixed(1)}" fill="#f4f1e8" stroke="#d7d0bf" stroke-width="2" opacity=".95"/>` : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="#56636c"/>`;
+  }
+  let crust = '';
+  if (dirty) for (let i = 0; i < 70; i++) { const a = rnd() * 7, r = rnd() * 230; crust += `<circle cx="${(500 + Math.cos(a) * r).toFixed(1)}" cy="${(250 + Math.sin(a) * r * .95).toFixed(1)}" r="${(4 + rnd() * 16).toFixed(1)}" fill="#efe9da" opacity="${(.3 + rnd() * .4).toFixed(2)}"/>`; }
+  return `<svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs>
+    <radialGradient id="fc" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".85" stop-color="#e2e8ec"/><stop offset="1" stop-color="#c3ccd2"/></radialGradient>
+    <radialGradient id="nb" cx=".35" cy=".35" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#c3ccd3"/><stop offset="1" stop-color="#7c8892"/></radialGradient>
+    <linearGradient id="cr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f9fa"/><stop offset=".3" stop-color="#b9c3cb"/><stop offset=".5" stop-color="#fff"/><stop offset=".8" stop-color="#8f9ba5"/><stop offset="1" stop-color="#dfe5e9"/></linearGradient></defs>
+    <rect width="1000" height="500" fill="#dfeef1"/><circle cx="500" cy="250" r="280" fill="url(#cr)"/><circle cx="500" cy="250" r="250" fill="url(#fc)"/>${crust}${nubs}</svg>`;
+}
+function initBA() {
+  const frame = $('[data-ba-frame]'), before = $('[data-ba-before]'), after = $('[data-ba-after]'), range = $('[data-ba-range]'), handle = $('[data-ba-handle]');
+  const render = (k) => { before.innerHTML = baSVG(k, true); after.innerHTML = baSVG(k, false); };
+  const move = () => { before.style.clipPath = `inset(0 ${100 - range.value}% 0 0)`; handle.style.left = range.value + '%'; };
+  range.addEventListener('input', move);
+  $$('[data-ba-tabs] button').forEach(b => b.addEventListener('click', () => {
+    $$('[data-ba-tabs] button').forEach(x => x.classList.remove('is-active')); b.classList.add('is-active'); render(b.dataset.ba);
+  }));
+  render('glass'); move();
+  // petite animation d'invitation au premier affichage
+  new IntersectionObserver(([e], o) => {
+    if (!e.isIntersecting) return; o.disconnect();
+    let t = 0; const id = setInterval(() => { t += 1; range.value = 50 + Math.sin(t / 8) * 22; move(); if (t > 50) { clearInterval(id); range.value = 50; move(); } }, 30);
+  }, { threshold: .5 }).observe(frame);
+}
+
+renderOffers(); renderPrices(); renderContent(); initGallery(); initTiming(); initRegions(); initCalc(); initSim(); initBA(); initQuiz(); initCart(); initMisc();
