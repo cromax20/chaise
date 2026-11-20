@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Posturo Pro — Chaise de bureau ergonomique</title>
+  <meta name="description" content="Posturo Pro : la chaise de bureau ergonomique réglable en 12 points. Support lombaire adaptatif, appui-tête 3D, accoudoirs 4D. Livraison offerte, 30 jours d'essai, garantie 3 ans.">
+  <meta property="og:title" content="Posturo Pro — Dites adieu au mal de dos">
+  <meta property="og:description" content="Le confort d'une chaise à 1 000 €, sans le prix. Livraison offerte & 30 jours d'essai.">
+  <meta property="og:image" content="assets/chair.svg">
+  <link rel="icon" href="assets/chair.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Barre d'annonce ===== -->
+  <div class="announce">
+    <div class="announce__track">
+      <span>🚚 Livraison offerte en Belgique, France &amp; Pays-Bas</span>
+      <span>⏳ Offre de lancement : <strong data-countdown>--:--:--</strong></span>
+      <span>↩️ 30 jours pour essayer, satisfait ou remboursé</span>
+    </div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">Posturo<span>.</span></a>
+      <nav class="nav">
+        <a href="#avantages">Avantages</a>
+        <a href="#comparatif">Comparatif</a>
+        <a href="#avis">Avis</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="cart-btn" data-open-cart aria-label="Ouvrir le panier">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Bloc produit (hero) ===== -->
+    <section class="product container" id="acheter">
+      <div class="gallery">
+        <div class="gallery__main" data-gallery-main>
+          <span class="badge badge--sale" data-discount-badge>-38%</span>
+          <img src="assets/chair.svg" alt="Chaise ergonomique Posturo Pro" data-main-img>
+        </div>
+        <div class="gallery__thumbs">
+          <button class="thumb is-active" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt=""></button>
+          <button class="thumb" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt="" style="filter:hue-rotate(0) grayscale(1) brightness(1.6)"></button>
+          <button class="thumb" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt="" style="filter:invert(.85)"></button>
+          <button class="thumb thumb--video" data-thumb="assets/chair.svg"><img src="assets/chair.svg" alt=""><span>▶</span></button>
+        </div>
+      </div>
+
+      <div class="buybox">
+        <a href="#avis" class="rating">
+          <span class="stars">★★★★★</span>
+          <span><strong data-rating>4,8</strong>/5 · <span data-review-count>1 200+</span> avis</span>
+        </a>
+        <h1>Posturo Pro<br><span>La chaise qui sauve votre dos.</span></h1>
+
+        <div class="price">
+          <span class="price__now" data-price>249 €</span>
+          <span class="price__old" data-compare>399 €</span>
+          <span class="price__save" data-save>Économisez 150 €</span>
+        </div>
+        <p class="klarna">ou 3 × <strong data-installment>83,00 €</strong> sans frais avec Klarna</p>
+
+        <ul class="bullets">
+          <li><b>Support lombaire adaptatif</b> qui suit la courbe de votre dos</li>
+          <li><b>Réglable en 12 points</b> : appui-tête 3D, accoudoirs 4D, profondeur d'assise</li>
+          <li><b>Maille respirante</b> : fini le dos qui transpire l'été</li>
+          <li><b>Inclinaison 90°–135°</b> avec blocage, pour vos pauses</li>
+        </ul>
+
+        <div class="option">
+          <div class="option__label">Couleur : <strong data-color-name>Noir minuit</strong></div>
+          <div class="swatches">
+            <button class="swatch is-active" style="--c:#1b1e23" data-color="Noir minuit" data-filter="none" aria-label="Noir minuit"></button>
+            <button class="swatch" style="--c:#9aa1aa" data-color="Gris perle" data-filter="grayscale(1) brightness(1.6)" aria-label="Gris perle"></button>
+            <button class="swatch" style="--c:#eceae6" data-color="Blanc nordique" data-filter="invert(.85)" aria-label="Blanc nordique"></button>
+          </div>
+        </div>
+
+        <div class="option">
+          <div class="option__label">Choisissez votre offre</div>
+          <div class="bundles" data-bundles>
+            <label class="bundle">
+              <input type="radio" name="bundle" value="1">
+              <span class="bundle__body">
+                <span class="bundle__title">1 chaise</span>
+                <span class="bundle__sub">Prix de lancement</span>
+              </span>
+              <span class="bundle__price" data-bundle-price="1"></span>
+            </label>
+            <label class="bundle bundle--best">
+              <span class="bundle__tag">Le plus populaire</span>
+              <input type="radio" name="bundle" value="2" checked>
+              <span class="bundle__body">
+                <span class="bundle__title">2 chaises <em>-10% en plus</em></span>
+                <span class="bundle__sub">Idéal maison + bureau / en couple</span>
+              </span>
+              <span class="bundle__price" data-bundle-price="2"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="stock">
+          <div class="stock__text">🔥 Forte demande : <strong>plus que <span data-stock>17</span> en stock</strong> à ce prix</div>
+          <div class="stock__bar"><span data-stock-bar></span></div>
+        </div>
+
+        <button class="btn btn--primary btn--xl" data-add-to-cart>
+          Ajouter au panier — <span data-cta-price>448 €</span>
+        </button>
+        <button class="btn btn--dark btn--xl" data-buy-now>Acheter maintenant</button>
+
+        <p class="delivery">📦 Commandez maintenant, livré entre le <strong data-eta>--</strong></p>
+
+        <div class="pay-icons" aria-label="Moyens de paiement">
+          <span>VISA</span><span>Mastercard</span><span>Bancontact</span><span>PayPal</span><span>Apple Pay</span><span>Klarna</span>
+        </div>
+
+        <div class="mini-trust">
+          <div>🚚<span>Livraison<br>offerte</span></div>
+          <div>↩️<span>30 jours<br>d'essai</span></div>
+          <div>🛡️<span>Garantie<br>3 ans</span></div>
+          <div>🔒<span>Paiement<br>sécurisé</span></div>
+        </div>
+
+        <details class="acc" open>
+          <summary>Description</summary>
+          <p>Conçue pour les longues journées de télétravail, la Posturo Pro maintient votre colonne dans sa position naturelle grâce à son support lombaire auto-adaptatif et à ses 12 réglages. Son dossier en maille haute densité laisse circuler l'air, et sa base en aluminium supporte jusqu'à 150 kg.</p>
+        </details>
+        <details class="acc">
+          <summary>Caractéristiques techniques</summary>
+          <table class="specs" data-specs></table>
+        </details>
+        <details class="acc">
+          <summary>Livraison &amp; retours</summary>
+          <p>Expédition sous 24–48 h, livraison suivie offerte. Montage en 10 minutes, outils inclus. Vous avez 30 jours après réception pour la tester : si elle ne vous convient pas, on vous rembourse.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== Logos / réassurance ===== -->
+    <section class="press">
+      <div class="container press__inner">
+        <span>Testée et approuvée par des télétravailleurs, développeurs, gamers &amp; étudiants</span>
+      </div>
+    </section>
+
+    <!-- ===== Problème / agitation ===== -->
+    <section class="pain container">
+      <div class="pain__text">
+        <p class="eyebrow">Le problème</p>
+        <h2>Vous passez plus de temps assis que vous ne dormez.</h2>
+        <p>8 h par jour sur une chaise mal adaptée, c'est le dos qui s'arrondit, les épaules qui se crispent et la nuque qui tire dès 15 h. Ce n'est pas vous le problème : c'est votre chaise.</p>
+      </div>
+      <div class="pain__stats">
+        <div class="stat"><strong>8 / 10</strong><span>adultes souffriront de mal de dos au cours de leur vie</span></div>
+        <div class="stat"><strong>+9 h</strong><span>passées assis chaque jour en moyenne par un employé de bureau</span></div>
+        <div class="stat"><strong>12</strong><span>points de réglage sur la Posturo Pro pour s'adapter à vous</span></div>
+      </div>
+    </section>
+
+    <!-- ===== Avantages avec points interactifs ===== -->
+    <section class="features" id="avantages">
+      <div class="container">
+        <p class="eyebrow center">La solution</p>
+        <h2 class="center">Chaque détail pensé pour votre posture</h2>
+        <div class="hotspots">
+          <div class="hotspots__img">
+            <img src="assets/chair.svg" alt="Schéma de la chaise">
+            <button class="spot" style="top:7%;left:50%" data-spot="0">1</button>
+            <button class="spot" style="top:28%;left:50%" data-spot="1">2</button>
+            <button class="spot" style="top:46%;left:62%" data-spot="2">3</button>
+            <button class="spot" style="top:51%;left:22%" data-spot="3">4</button>
+            <button class="spot" style="top:66%;left:40%" data-spot="4">5</button>
+            <button class="spot" style="top:91%;left:72%" data-spot="5">6</button>
+          </div>
+          <ol class="hotspots__list" data-spot-list>
+            <li class="is-active"><h3>Appui-tête 3D</h3><p>Hauteur et angle réglables : votre nuque se relâche enfin, même en inclinaison.</p></li>
+            <li><h3>Dossier en maille respirante</h3><p>Maille élastique haute densité qui épouse le dos et évacue la chaleur.</p></li>
+            <li><h3>Support lombaire adaptatif</h3><p>Il suit vos mouvements et maintient la courbe naturelle du bas du dos.</p></li>
+            <li><h3>Accoudoirs 4D</h3><p>Hauteur, profondeur, largeur et rotation : vos épaules restent détendues au clavier.</p></li>
+            <li><h3>Assise coulissante</h3><p>Réglez la profondeur pour soutenir vos cuisses sans couper la circulation.</p></li>
+            <li><h3>Base aluminium &amp; roulettes PU</h3><p>Ultra-stable, supporte 150 kg, roulettes silencieuses qui n'abîment pas le parquet.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Bénéfices ===== -->
+    <section class="benefits container">
+      <div class="benefit"><span class="benefit__icon">🧘</span><h3>Moins de douleurs</h3><p>Une posture correcte maintenue sans effort, toute la journée.</p></div>
+      <div class="benefit"><span class="benefit__icon">⚡</span><h3>Plus de concentration</h3><p>Quand le corps est bien installé, l'esprit reste sur la tâche.</p></div>
+      <div class="benefit"><span class="benefit__icon">🌬️</span><h3>Toujours au frais</h3><p>La maille laisse respirer : idéal pour les longues sessions d'été.</p></div>
+      <div class="benefit"><span class="benefit__icon">🔧</span><h3>Montée en 10 min</h3><p>Notice illustrée et outils inclus. Aucune compétence requise.</p></div>
+    </section>
+
+    <!-- ===== Comparatif ===== -->
+    <section class="compare" id="comparatif">
+      <div class="container">
+        <p class="eyebrow center">Comparatif</p>
+        <h2 class="center">Le confort d'une chaise à 1 000 €.<br>Sans le prix.</h2>
+        <div class="table-wrap">
+          <table class="compare__table">
+            <thead>
+              <tr><th></th><th class="us">Posturo Pro</th><th>Chaise de bureau standard</th><th>Chaise ergonomique haut de gamme</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Support lombaire adaptatif</td><td class="us">✔</td><td>✘</td><td>✔</td></tr>
+              <tr><td>Appui-tête réglable</td><td class="us">✔ 3D</td><td>✘</td><td>En option</td></tr>
+              <tr><td>Accoudoirs réglables</td><td class="us">✔ 4D</td><td>Fixes</td><td>✔</td></tr>
+              <tr><td>Dossier respirant</td><td class="us">✔</td><td>Simili-cuir</td><td>✔</td></tr>
+              <tr><td>Essai gratuit</td><td class="us">30 jours</td><td>✘</td><td>Variable</td></tr>
+              <tr><td>Garantie</td><td class="us">3 ans</td><td>1 an</td><td>5–12 ans</td></tr>
+              <tr class="row-price"><td>Prix</td><td class="us" data-price-cell>249 €</td><td>80–150 €</td><td>800–1 500 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="center"><a href="#acheter" class="btn btn--primary">Je choisis la Posturo Pro</a></div>
+      </div>
+    </section>
+
+    <!-- ===== Avis ===== -->
+    <!--
+      ⚠️ AVIS D'EXEMPLE : remplacez-les par de vrais avis clients (Judge.me, Loox, Trustpilot,
+      ou avis importés de la fiche fournisseur) AVANT la mise en ligne. Publier de faux avis est
+      interdit dans l'UE (directive Omnibus). Voir README.md.
+    -->
+    <section class="reviews container" id="avis">
+      <p class="eyebrow center">Avis clients</p>
+      <h2 class="center">Ils ont dit adieu au mal de dos</h2>
+      <div class="reviews__summary">
+        <div class="reviews__score">
+          <strong data-rating>4,8</strong>
+          <span class="stars">★★★★★</span>
+          <span>Basé sur <span data-review-count>1 200+</span> avis</span>
+        </div>
+        <div class="reviews__bars" data-review-bars></div>
+      </div>
+      <div class="reviews__grid" data-reviews></div>
+      <div class="center"><button class="btn btn--ghost" data-more-reviews>Voir plus d'avis</button></div>
+    </section>
+
+    <!-- ===== Garantie ===== -->
+    <section class="guarantee">
+      <div class="container guarantee__inner">
+        <div class="seal"><strong>30</strong><span>JOURS<br>D'ESSAI</span></div>
+        <div>
+          <h2>Essayez-la pendant 30 jours. Sans risque.</h2>
+          <p>Asseyez-vous dessus, travaillez, jouez, faites la sieste. Si votre dos ne vous dit pas merci, renvoyez-la : nous vous remboursons intégralement. Simple comme ça.</p>
+          <a href="#acheter" class="btn btn--primary">Profiter de l'offre</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq container" id="faq">
+      <p class="eyebrow center">FAQ</p>
+      <h2 class="center">Vos questions, nos réponses</h2>
+      <div class="faq__list">
+        <details class="acc"><summary>Quels sont les délais de livraison ?</summary><p>Les commandes sont expédiées sous 24–48 h. Comptez 5 à 10 jours ouvrés pour la Belgique, la France et les Pays-Bas. Vous recevez un numéro de suivi par e-mail.</p></details>
+        <details class="acc"><summary>Est-ce difficile à monter ?</summary><p>Non : environ 10 minutes avec la notice illustrée et les outils fournis.</p></details>
+        <details class="acc"><summary>Pour quelle taille est-elle adaptée ?</summary><p>De 1,55 m à 1,95 m environ, jusqu'à 150 kg, grâce à la hauteur d'assise, la profondeur et l'appui-tête réglables.</p></details>
+        <details class="acc"><summary>Et si elle ne me convient pas ?</summary><p>Vous disposez de 30 jours après réception pour nous la retourner et être remboursé. Contactez simplement notre service client.</p></details>
+        <details class="acc"><summary>Les roulettes abîment-elles le parquet ?</summary><p>Non, elles sont en polyuréthane (PU) souple et silencieuses, adaptées au parquet, carrelage et moquette.</p></details>
+        <details class="acc"><summary>Quels moyens de paiement acceptez-vous ?</summary><p>Carte bancaire, Bancontact, PayPal, Apple Pay et Klarna (paiement en 3 fois sans frais). Paiement 100 % sécurisé.</p></details>
+      </div>
+    </section>
+
+    <!-- ===== CTA final ===== -->
+    <section class="final">
+      <div class="container final__inner">
+        <img src="assets/chair.svg" alt="">
+        <div>
+          <h2>Votre dos vous remerciera dès demain.</h2>
+          <p>Offre de lancement à <strong data-price>249 €</strong> au lieu de <s data-compare>399 €</s>, valable encore <strong data-countdown>--:--:--</strong>.</p>
+          <a href="#acheter" class="btn btn--primary btn--xl">Je commande ma Posturo Pro</a>
+          <p class="final__small">🚚 Livraison offerte · ↩️ 30 jours d'essai · 🛡️ Garantie 3 ans</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a href="#" class="logo logo--light">Posturo<span>.</span></a>
+        <p>L'ergonomie haut de gamme, accessible à tous.</p>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <a href="#faq">FAQ</a><a href="mailto:contact@exemple.com">Contact</a><a href="#">Suivre ma commande</a>
+      </div>
+      <div>
+        <h4>Légal</h4>
+        <a href="#">Conditions générales de vente</a><a href="#">Politique de retour</a><a href="#">Confidentialité</a><a href="#">Mentions légales</a>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>-10 % sur votre première commande.</p>
+        <form class="newsletter" data-newsletter>
+          <input type="email" placeholder="Votre e-mail" required>
+          <button class="btn btn--primary">OK</button>
+        </form>
+      </div>
+    </div>
+    <p class="footer__copy">© <span data-year></span> Posturo. Tous droits réservés.</p>
+  </footer>
+
+  <!-- ===== Barre d'achat collante (mobile & scroll) ===== -->
+  <div class="sticky-buy" data-sticky>
+    <img src="assets/chair.svg" alt="">
+    <div class="sticky-buy__info">
+      <strong>Posturo Pro</strong>
+      <span><span data-price>249 €</span> <s data-compare>399 €</s></span>
+    </div>
+    <button class="btn btn--primary" data-add-to-cart>Ajouter au panier</button>
+  </div>
+
+  <!-- ===== Panier latéral ===== -->
+  <div class="overlay" data-overlay></div>
+  <aside class="drawer" data-drawer aria-label="Panier">
+    <div class="drawer__head">
+      <h3>Votre panier</h3>
+      <button data-close-cart aria-label="Fermer">✕</button>
+    </div>
+    <div class="drawer__ship" data-ship-msg></div>
+    <div class="drawer__items" data-cart-items></div>
+    <div class="upsell" data-upsell>
+      <img src="assets/chair.svg" alt="">
+      <div><strong>Repose-pieds ergonomique</strong><span>Complète la posture parfaite · <b data-upsell-price>29 €</b></span></div>
+      <button class="btn btn--small" data-add-upsell>+ Ajouter</button>
+    </div>
+    <div class="drawer__foot">
+      <div class="drawer__total"><span>Total</span><strong data-cart-total>0 €</strong></div>
+      <button class="btn btn--primary btn--xl" data-checkout>Commander en toute sécurité 🔒</button>
+      <p class="drawer__note">Livraison offerte · Paiement sécurisé · 30 jours d'essai</p>
+    </div>
+  </aside>
+
+  <div class="toast" data-toast></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img" aria-label="Chaise ergonomique">
+  <defs>
+    <linearGradient id="mesh" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2f36"/>
+      <stop offset="1" stop-color="#14171c"/>
+    </linearGradient>
+    <pattern id="grid" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M0 0L6 6M6 0L0 6" stroke="#3d434d" stroke-width=".7"/>
+    </pattern>
+    <linearGradient id="alu" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9aa3ad"/>
+      <stop offset=".5" stop-color="#e3e7eb"/>
+      <stop offset="1" stop-color="#8c949e"/>
+    </linearGradient>
+  </defs>
+  <!-- appui-tête -->
+  <rect x="150" y="18" width="100" height="44" rx="18" fill="url(#mesh)"/>
+  <rect x="150" y="18" width="100" height="44" rx="18" fill="url(#grid)"/>
+  <rect x="194" y="60" width="12" height="26" rx="4" fill="#20242a"/>
+  <!-- dossier -->
+  <path d="M120 92 Q200 70 280 92 L272 250 Q200 270 128 250 Z" fill="url(#mesh)"/>
+  <path d="M120 92 Q200 70 280 92 L272 250 Q200 270 128 250 Z" fill="url(#grid)"/>
+  <!-- support lombaire -->
+  <path d="M140 200 Q200 186 260 200 L258 228 Q200 242 142 228 Z" fill="#ff6a3d" opacity=".9"/>
+  <!-- accoudoirs -->
+  <rect x="88" y="250" width="16" height="70" rx="5" fill="#20242a"/>
+  <rect x="296" y="250" width="16" height="70" rx="5" fill="#20242a"/>
+  <rect x="72" y="244" width="52" height="14" rx="7" fill="#2b2f36"/>
+  <rect x="276" y="244" width="52" height="14" rx="7" fill="#2b2f36"/>
+  <!-- assise -->
+  <path d="M100 300 Q200 284 300 300 L292 336 Q200 350 108 336 Z" fill="#1c1f25"/>
+  <path d="M108 300 Q200 288 292 300 L288 318 Q200 330 112 318 Z" fill="#2f343c"/>
+  <!-- vérin -->
+  <rect x="190" y="344" width="20" height="62" rx="4" fill="url(#alu)"/>
+  <!-- base -->
+  <path d="M200 404 L80 438 M200 404 L320 438 M200 404 L130 456 M200 404 L270 456 M200 404 L200 446"
+        stroke="url(#alu)" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#14171c">
+    <circle cx="80" cy="448" r="11"/><circle cx="320" cy="448" r="11"/>
+    <circle cx="130" cy="466" r="11"/><circle cx="270" cy="466" r="11"/>
+    <circle cx="200" cy="456" r="11"/>
+  </g>
+</svg>
