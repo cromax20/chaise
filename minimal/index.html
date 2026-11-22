@@ -99,6 +99,24 @@
   details p{color:var(--muted);margin-top:12px;max-width:720px}
   .faq{max-width:760px}
 
+  /* Onglets */
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:36px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{padding:14px 18px;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s}
+  .tabs button:hover{color:var(--ink)}
+  .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+  .tabpanel{padding:32px 0 0;max-width:760px;min-height:220px}
+  .tabpanel p{color:var(--muted);margin-bottom:14px}
+  .tabpanel ul{list-style:none}
+  .tabpanel li{padding:14px 0;border-bottom:1px solid var(--line)}
+  .tabpanel li::before{content:"—";color:var(--accent);margin-right:12px}
+  .specs{width:100%;min-width:0;font-size:.95rem}
+  .specs td{text-align:left;padding:14px 0}
+  .specs td:first-child{color:var(--muted);width:40%}
+  .review{padding:18px 0;border-bottom:1px solid var(--line)}
+  .review .stars{color:#e0a100;letter-spacing:2px}
+  .review small{color:var(--muted)}
+
   footer{border-top:1px solid var(--line);padding:40px 0;font-size:.85rem;color:var(--muted)}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   footer a{margin-left:18px}
@@ -111,7 +129,7 @@
 <nav>
   <div class="wrap">
     <a href="#" class="logo">Aqua<span>véa</span></a>
-    <div class="links"><a href="#avantages">Avantages</a><a href="#comparatif">Comparatif</a><a href="#faq">FAQ</a></div>
+    <div class="links"><a href="#avantages">Avantages</a><a href="#comparatif">Comparatif</a><a href="#infos">Fiche produit</a><a href="#faq">FAQ</a></div>
     <a href="#commander" class="btn">Commander</a>
   </div>
 </nav>
@@ -189,6 +207,16 @@
   </div>
 </section>
 
+<!-- INFOS PRODUIT EN ONGLETS — contenu modifiable dans CONFIG.tabs -->
+<section id="infos">
+  <div class="wrap">
+    <p class="label">Fiche produit</p>
+    <h2>Tout savoir.</h2>
+    <div class="tabs" role="tablist" data-tabs></div>
+    <div class="tabpanel" role="tabpanel" data-tabpanel></div>
+  </div>
+</section>
+
 <!-- ACHAT -->
 <section id="commander">
   <div class="wrap buy">
@@ -236,6 +264,38 @@ const CONFIG = {
     { id: 'kit', title: 'Pommeau + 3 cartouches', sub: 'Environ 9 mois de filtration', price: 49.90, compare: 60.70, default: true },
   ],
   checkoutUrl: '',     // lien Shopify / Stripe — vide = mode démo
+
+  // Onglets « Fiche produit » — remplacez par le contenu réel de la fiche fournisseur.
+  // type: 'text' (paragraphes), 'specs' (tableau [libellé, valeur]), 'list' (puces), 'reviews' (avis réels uniquement)
+  tabs: [
+    { id: 'description', title: 'Description', type: 'text', content: [
+      'Ce pommeau de douche combine une tête haute pression et une cartouche filtrante 15 étapes logée dans la poignée. L\'eau traverse la cartouche avant de sortir par les buses : elle arrive sur votre peau avec moins de chlore, moins de sédiments et moins de calcaire.',
+      'Trois modes de jet et un bouton stop permettent d\'ajuster la douche et de couper l\'eau pendant que vous vous savonnez. La cartouche se remplace en quelques secondes, sans outils.',
+    ] },
+    { id: 'specs', title: 'Caractéristiques', type: 'specs', content: [
+      ['Raccord', 'G1/2" standard'],
+      ['Filtration', '15 étapes (vitamine C, charbon actif, KDF-55, résine, céramique, coton PP)'],
+      ['Modes de jet', '3 + bouton stop'],
+      ['Débit', '≈ 8 L/min (à confirmer)'],
+      ['Matériau', 'ABS, finition chromée'],
+      ['Durée d\'une cartouche', '≈ 2 à 3 mois'],
+    ] },
+    { id: 'box', title: 'Contenu du colis', type: 'list', content: [
+      '1 pommeau de douche filtrant',
+      '1 cartouche 15 étapes installée (+ 2 cartouches avec la formule 3 cartouches)',
+      'Ruban téflon et joints',
+      'Notice d\'installation',
+    ] },
+    { id: 'shipping', title: 'Livraison & retours', type: 'list', content: [
+      'Livraison offerte en Belgique, France et Luxembourg',
+      'Délai : 5 à 10 jours ouvrés, numéro de suivi par e-mail',
+      '60 jours pour essayer : satisfait ou remboursé',
+      'Retour simple : écrivez-nous, on vous envoie la marche à suivre',
+    ] },
+    { id: 'reviews', title: 'Avis', type: 'reviews', content: [
+      // N'ajoutez que de vrais avis clients : { name: 'Julie M.', stars: 5, text: '…' }
+    ] },
+  ],
 };
 
 const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
@@ -256,6 +316,26 @@ const from = Math.min(...CONFIG.options.map(o => o.price));
 $$('[data-price-from]').forEach(e => e.textContent = eur(from));
 $('[data-saving]').textContent = `−${Math.round((1 - CONFIG.flowUs / CONFIG.flowClassic) * 100)} %`;
 $('[data-year]').textContent = new Date().getFullYear();
+
+/* Onglets fiche produit */
+const renderTab = (t) => {
+  const c = t.content;
+  if (t.type === 'text') return c.map(p => `<p>${p}</p>`).join('');
+  if (t.type === 'specs') return `<table class="specs">${c.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table>`;
+  if (t.type === 'list') return `<ul>${c.map(li => `<li>${li}</li>`).join('')}</ul>`;
+  if (t.type === 'reviews') return c.length
+    ? c.map(r => `<div class="review"><span class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</span><p>${r.text}</p><small>${r.name}</small></div>`).join('')
+    : '<p class="muted">Aucun avis pour le moment. Les premiers avis clients apparaîtront ici après les premières livraisons.</p>';
+  return '';
+};
+const tabs = $('[data-tabs]'), panel = $('[data-tabpanel]');
+tabs.innerHTML = CONFIG.tabs.map((t, i) => `<button role="tab" data-tab="${i}" aria-selected="${i === 0}">${t.title}${t.type === 'reviews' && t.content.length ? ` (${t.content.length})` : ''}</button>`).join('');
+const showTab = (i) => {
+  $$('[data-tab]').forEach((b, j) => b.setAttribute('aria-selected', i === j));
+  panel.innerHTML = renderTab(CONFIG.tabs[i]);
+};
+$$('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(+b.dataset.tab)));
+showTab(0);
 
 $('[data-buy]').addEventListener('click', () => {
   if (CONFIG.checkoutUrl) return location.href = CONFIG.checkoutUrl + '?option=' + selected;
