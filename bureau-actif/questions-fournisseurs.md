@@ -108,3 +108,10 @@ Thank you!
 ## Après les réponses
 
 Reportez les valeurs confirmées dans `CONFIG` en haut du script de `index.html` : prix, hauteurs, vitesse, bruit, garantie, délais. Les champs marqués « à confirmer » sur le site sont ceux qui dépendent de ces réponses.
+
+---
+
+## Photos utilisées sur le site
+
+Les photos de `img/` viennent du site d'AOKE Europe (produits et ambiances). `scene-bureau-tapis.jpg` est un photomontage : leur photo d'ambiance du bureau, plus leur photo du tapis.
+AOKE fournit des visuels à ses revendeurs, mais **demandez leur accord écrit avant la mise en ligne** (et leurs photos HD, ou une vraie photo du bureau avec le tapis).
