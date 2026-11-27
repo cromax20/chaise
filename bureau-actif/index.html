@@ -113,6 +113,41 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .context figcaption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.92);padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:600}
 @media (max-width:900px){.positions__inner{grid-template-columns:1fr}.context__grid{grid-template-columns:1fr}}
 
+/* Accessoires */
+.acc-sec{background:linear-gradient(180deg,var(--bg),#efe9df)}
+.acc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.acc-head .lead{max-width:560px}
+.acc-filters{display:flex;gap:8px;flex-wrap:wrap}
+.acc-filters button{padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;font-size:.86rem;color:var(--muted)}
+.acc-filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.acc-kit{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;background:var(--green);color:#fff;border-radius:24px;padding:26px 28px;margin:32px 0 22px;overflow:hidden;position:relative}
+.acc-kit h3{font-family:Fraunces,serif;font-size:1.6rem;margin:6px 0 8px}
+.acc-kit p{color:#cfe0d6;font-size:.95rem}
+.acc-kit__tag{display:inline-block;background:var(--gold);color:var(--ink);font-weight:700;font-size:.75rem;padding:3px 10px;border-radius:999px}
+.acc-kit__imgs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.acc-kit__imgs img{background:#fff;border-radius:14px;aspect-ratio:1;object-fit:contain;padding:6px}
+.acc-kit__buy{display:flex;align-items:center;gap:16px;margin-top:16px;flex-wrap:wrap}
+.acc-kit__buy b{font-size:1.6rem}
+.acc-kit__buy s{color:#a9c2b6}
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.acc-card{background:var(--surface);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s}
+.acc-card:hover{transform:translateY(-3px)}
+.acc-card__img{background:#f6f4f0;aspect-ratio:4/3;display:grid;place-items:center;position:relative}
+.acc-card__img img{width:82%;height:82%;object-fit:contain;transition:transform .4s}
+.acc-card:hover .acc-card__img img{transform:scale(1.05)}
+.acc-card__cat{position:absolute;top:10px;left:10px;background:#fff;border-radius:999px;font-size:.7rem;font-weight:700;padding:3px 9px;color:var(--muted)}
+.acc-card__body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.acc-card__body h3{font-size:1rem}
+.acc-card__body p{font-size:.85rem;color:var(--muted);flex:1}
+.acc-card__spec{font-size:.75rem;color:var(--green);font-weight:600}
+.acc-card__foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.acc-card__foot b{font-size:1.1rem}
+.acc-add{background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-size:.82rem;font-weight:600}
+.acc-add.done{background:var(--ok)}
+@media (max-width:1000px){.acc-grid{grid-template-columns:repeat(3,1fr)}.acc-kit{grid-template-columns:1fr}}
+@media (max-width:720px){.acc-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.acc-card__body{padding:12px}.acc-card__body p{display:none}}
+
 /* Illustration */
 .desk-top,.desk-inner{transition:transform 1.1s cubic-bezier(.6,0,.2,1)}
 .belt{stroke-dasharray:6 10;animation:belt .7s linear infinite paused}
@@ -299,7 +334,7 @@ footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:10
 <nav>
   <div class="wrap">
     <a href="#" class="logo">Movéa<span>.</span></a>
-    <div class="links"><a href="#pack">Le pack</a><a href="#outils">Compatibilité</a><a href="#comparatif">Comparatif</a><a href="#fiche">Fiche technique</a><a href="#faq">FAQ</a></div>
+    <div class="links"><a href="#pack">Le pack</a><a href="#accessoires">Accessoires</a><a href="#outils">Compatibilité</a><a href="#comparatif">Comparatif</a><a href="#fiche">Fiche technique</a><a href="#faq">FAQ</a></div>
     <button class="cartbtn" data-open-cart aria-label="Panier">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><i data-count>0</i>
     </button>
@@ -413,13 +448,30 @@ footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:10
       <div class="group"><div class="group__label">1. Votre formule</div><div class="offers" data-offers></div></div>
       <div class="group" data-g-size><div class="group__label">2. Taille du plateau <small data-size-name></small></div><div class="seg" data-sizes></div></div>
       <div class="group" data-g-color><div class="group__label">3. Finition <small data-color-name></small></div><div class="seg" data-colors></div></div>
-      <div class="group"><div class="group__label">Accessoires conseillés</div><div class="addons" data-addons></div></div>
+      <div class="group"><div class="group__label">Accessoires conseillés <small><a href="#accessoires" style="text-decoration:underline">Voir tous les accessoires</a></small></div><div class="addons" data-addons></div></div>
 
       <button class="btn btn--cta btn--xl" data-add>Ajouter au panier · <span data-total>--</span></button>
       <p class="eta">📦 Livré entre le <b data-eta>--</b> · 3 colis, suivi inclus</p>
       <div class="pay"><span>VISA</span><span>Mastercard</span><span>Bancontact</span><span>PayPal</span><span>Apple Pay</span><span>Klarna 3×</span></div>
       <div class="mini card"><div>🚚<span>Livraison<br>offerte</span></div><div>↩️<span>30 jours<br>d'essai</span></div><div>🛡️<span>Garantie<br>5 ans</span></div><div>🔒<span>Paiement<br>sécurisé</span></div></div>
     </div>
+  </div>
+</section>
+
+<!-- ACCESSOIRES -->
+<section class="acc-sec" id="accessoires">
+  <div class="wrap">
+    <div class="acc-head">
+      <div>
+        <p class="eyebrow">Accessoires</p>
+        <h2>Les petits détails qui changent tout</h2>
+        <p class="lead">Un écran qui suit vos changements de hauteur, des câbles qui ne traînent jamais près du tapis : les accessoires pensés pour ce pack.</p>
+      </div>
+    </div>
+
+    <div class="acc-kit" data-acc-kit></div>
+    <div class="acc-grid" data-acc-grid></div>
+    <p class="note">Tous les accessoires sont compatibles avec le bureau du pack. Livrés avec le pack, ou séparément.</p>
   </div>
 </section>
 
@@ -592,9 +644,20 @@ const CONFIG = {
   ],
   addons: [
     { id: 'mat', name: 'Tapis anti-fatigue', sub: 'Pour les moments debout', price: 39 },
+    { id: 'arm1', name: 'Bras d\'écran simple', sub: 'Écran à hauteur des yeux, debout comme assis', price: 79 },
     { id: 'cable', name: 'Goulotte passe-câbles inclinable', sub: 'Des câbles qui suivent le bureau', price: 29 },
-    { id: 'castors', name: 'Roulettes verrouillables (×4)', sub: 'Déplacez le bureau d\'une pièce à l\'autre', price: 35 },
   ],
+  // Accessoires (photos AOKE) — prix de vente TTC à ajuster selon la grille fournisseur
+  accessoryCats: { ecran: 'Écran', cables: 'Câbles & énergie', confort: 'Confort' },
+  accessories: [
+    { id: 'arm1', cat: 'ecran', name: 'Bras d\'écran simple', img: 'img/acc/bras-ecran-simple.webp', text: 'L\'écran suit le bureau et reste à hauteur des yeux, assis, debout ou en marchant.', spec: 'Écrans de 2 à 9 kg · course 23 cm', price: 79 },
+    { id: 'arm2', cat: 'ecran', name: 'Bras double écran', img: 'img/acc/bras-ecran-double.webp', text: 'Deux écrans alignés à la bonne hauteur, réglables indépendamment.', spec: '2 écrans de 2 à 9 kg', price: 129 },
+    { id: 'tube', cat: 'cables', name: 'Gaine passe-câbles', img: 'img/acc/gaine-cables.webp', text: 'Indispensable sur un bureau réglable : les câbles suivent quand il monte, sans se tendre ni traîner sur le tapis.', spec: 'Articulée, s\'allonge avec le bureau', price: 19 },
+    { id: 'tray', cat: 'cables', name: 'Goulotte inclinable', img: 'img/acc/goulotte-inclinable.webp', text: 'Cache multiprise et chargeurs sous le plateau. Plus aucun câble au sol près du tapis.', spec: 'Se visse sous le plateau', price: 29 },
+    { id: 'socket', cat: 'cables', name: 'Bloc prises à pince', img: 'img/acc/prise-pince.webp', text: 'Prises et USB au bord du bureau, à portée de main même en marchant.', spec: '2 prises EU + USB-A + USB-C · garantie 5 ans', price: 49 },
+    { id: 'mat', cat: 'confort', name: 'Tapis anti-fatigue', img: 'img/acc/tapis-anti-fatigue-thumb.webp', text: 'Pour les moments debout quand le tapis de marche est à l\'arrêt.', spec: 'Mousse ergonomique, bords biseautés', price: 39 },
+  ],
+  accessoryKit: { name: 'Kit poste optimisé', items: ['arm1', 'tube', 'tray', 'socket'], discount: 0.15 },
   deliveryDays: [4, 8],
   checkoutUrl: '',
   tabs: [
@@ -804,10 +867,39 @@ function initCart() {
   renderCart();
 }
 
+/* ---------- Accessoires ---------- */
+function initAccessories() {
+  const A = CONFIG.accessories, byId = (id) => A.find(a => a.id === id);
+  const add = (items, label) => {
+    items.forEach(a => state.cart.push({ name: a.name, detail: label || 'Accessoire', price: a.price }));
+    save(); toast(items.length > 1 ? `${label} ajouté au panier` : `${items[0].name} ajouté au panier`);
+  };
+  const grid = () => {
+    $('[data-acc-grid]').innerHTML = A.map(a => `
+      <article class="acc-card">
+        <div class="acc-card__img"><span class="acc-card__cat">${CONFIG.accessoryCats[a.cat]}</span><img src="${a.img}" alt="${a.name}" loading="lazy"></div>
+        <div class="acc-card__body"><h3>${a.name}</h3><p>${a.text}</p><span class="acc-card__spec">${a.spec}</span>
+          <div class="acc-card__foot"><b>${eur(a.price)}</b><button class="acc-add" data-acc-add="${a.id}">+ Ajouter</button></div></div>
+      </article>`).join('');
+    $$('[data-acc-add]').forEach(b => b.onclick = () => { add([byId(b.dataset.accAdd)]); b.textContent = '✓ Ajouté'; b.classList.add('done'); setTimeout(() => { b.textContent = '+ Ajouter'; b.classList.remove('done'); }, 1800); });
+  };
+  const K = CONFIG.accessoryKit, kitItems = K.items.map(byId), full = kitItems.reduce((s, a) => s + a.price, 0), kitPrice = Math.round(full * (1 - K.discount));
+  $('[data-acc-kit]').innerHTML = `
+    <div><span class="acc-kit__tag">−${Math.round(K.discount * 100)} % en kit</span><h3>${K.name}</h3>
+      <p>${kitItems.map(a => a.name).join(' · ')}. Un écran à la bonne hauteur et zéro câble qui traîne autour du tapis.</p>
+      <div class="acc-kit__buy"><b>${eur(kitPrice)}</b><s>${eur(full)}</s><button class="btn btn--cta" data-kit-add>Ajouter le kit</button></div></div>
+    <div class="acc-kit__imgs">${kitItems.map(a => `<img src="${a.img}" alt="${a.name}" loading="lazy">`).join('')}</div>`;
+  $('[data-kit-add]').onclick = () => {
+    state.cart.push({ name: K.name, detail: kitItems.map(a => a.name).join(' · '), price: kitPrice });
+    save(); openCart();
+  };
+  grid();
+}
+
 /* ---------- Démarrage ---------- */
 const posScene = $('[data-scene="positions"]');
 const applyPos = setupScene(posScene);
-paint(); renderShop(); renderGlobalPrices(); initTools(); initTabs(); initCart();
+paint(); renderShop(); renderGlobalPrices(); initTools(); initTabs(); initCart(); initAccessories();
 // La section « positions » enchaîne les 3 hauteurs tant que le visiteur n'a pas cliqué
 const seq = ['assis', 'debout', 'marche']; let si = 2;
 setInterval(() => { if (!posScene._user && !document.hidden) { si = (si + 1) % 3; applyPos(seq[si]); } }, 3200);
