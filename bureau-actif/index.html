@@ -425,23 +425,14 @@ footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:10
     <div class="shop__visual">
       <div class="gallery">
         <div class="gallery__main"><img src="img/scene-pack.webp" alt="Le pack installé" data-gal-main></div>
-        <div class="gallery__thumbs" data-gal>
-          <button class="on" data-src="img/scene-pack.webp"><img src="img/scene-pack.webp" alt="Le pack installé"></button>
-          <button data-src="img/bureau-noyer-noir.webp"><img src="img/bureau-noyer-noir.webp" alt="Bureau noyer, cadre noir"></button>
-          <button data-src="img/bureau-blanc.webp"><img src="img/bureau-blanc.webp" alt="Bureau cadre clair"></button>
-          <button data-src="img/tapis-3-4.webp"><img src="img/tapis-3-4.webp" alt="Tapis de marche"></button>
-          <button data-src="img/tapis-profil.webp"><img src="img/tapis-profil.webp" alt="Tapis de marche de profil, 10,5 cm"></button>
-          <button data-src="img/tapis-dimensions.webp"><img src="img/tapis-dimensions.webp" alt="Dimensions du tapis"></button>
-          <button data-src="img/telecommande.webp"><img src="img/telecommande.webp" alt="Télécommande 4 mémoires"></button>
-          <button data-src="img/ambiance-bureau-2.webp"><img src="img/ambiance-bureau-2.webp" alt="Bureau en situation"></button>
-        </div>
+        <div class="gallery__thumbs" data-gal></div>
       </div>
-      <div class="shop__chips"><span>Moteur &lt; 45 dB</span><span>4 mémoires</span><span>Tapis de 10,5 cm</span><span>Garantie 5 ans</span></div>
+      <div class="shop__chips" data-chips></div>
     </div>
     <div>
       <p class="rating" data-rating hidden></p>
       <p class="eyebrow">Le pack Bureau actif</p>
-      <h2>Bureau électrique + tapis de marche</h2>
+      <h2 data-shop-title>Bureau électrique + tapis de marche</h2>
       <div class="price"><b data-price>--</b><s data-compare></s><em data-save></em></div>
       <p class="klarna">ou 3 × <b data-x3>--</b> sans frais</p>
 
@@ -451,7 +442,7 @@ footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:10
       <div class="group"><div class="group__label">Accessoires conseillés <small><a href="#accessoires" style="text-decoration:underline">Voir tous les accessoires</a></small></div><div class="addons" data-addons></div></div>
 
       <button class="btn btn--cta btn--xl" data-add>Ajouter au panier · <span data-total>--</span></button>
-      <p class="eta">📦 Livré entre le <b data-eta>--</b> · 3 colis, suivi inclus</p>
+      <p class="eta">📦 Livré entre le <b data-eta>--</b> · <span data-parcels>3 colis</span>, suivi inclus</p>
       <div class="pay"><span>VISA</span><span>Mastercard</span><span>Bancontact</span><span>PayPal</span><span>Apple Pay</span><span>Klarna 3×</span></div>
       <div class="mini card"><div>🚚<span>Livraison<br>offerte</span></div><div>↩️<span>30 jours<br>d'essai</span></div><div>🛡️<span>Garantie<br>5 ans</span></div><div>🔒<span>Paiement<br>sécurisé</span></div></div>
     </div>
@@ -638,10 +629,16 @@ const CONFIG = {
   ],
   sizes: [ { id: '140', name: '140 × 70 cm', extra: 0 }, { id: '160', name: '160 × 80 cm', extra: 40 } ],
   colors: [
-    { id: 'chene', name: 'Chêne clair / cadre blanc', top: '#d9b88a', frame: '#f2f2f0', c: '#d9b88a' },
-    { id: 'noyer', name: 'Noyer / cadre noir', top: '#7a5234', frame: '#2b2b2b', c: '#7a5234' },
-    { id: 'noir', name: 'Noir / cadre noir', top: '#2f3033', frame: '#1d1d1f', c: '#2f3033' },
+    { id: 'chene-noir', name: 'Chêne / cadre noir', top: '#b08a62', frame: '#2b2b2b', c: '#b08a62', ring: '#2b2b2b', img: 'img/bureau-chene-noir.webp' },
+    { id: 'chene-blanc', name: 'Chêne / cadre blanc', top: '#b08a62', frame: '#f2f2f0', c: '#b08a62', ring: '#f2f2f0', light: true, img: 'img/bureau-chene-blanc.webp' },
+    { id: 'blanc-alu', name: 'Blanc / cadre alu', top: '#f4f4f2', frame: '#b9bdc1', c: '#f4f4f2', ring: '#b9bdc1', light: true, img: 'img/bureau-blanc-alu.webp' },
   ],
+  // Photos de la galerie selon la formule choisie
+  gallery: {
+    pad: [['img/tapis-3-4.webp', 'Tapis de marche'], ['img/tapis-profil.webp', 'Tapis de profil : 10,5 cm d\'épaisseur'], ['img/tapis-dimensions.webp', 'Dimensions du tapis'], ['img/tapis-detail.webp', 'Détail de la bande et du cadre']],
+    desk: [['img/telecommande.webp', 'Télécommande 4 mémoires'], ['img/ambiance-bureau-2.webp', 'Bureau en situation']],
+    pack: [['img/scene-pack.webp', 'Le pack installé']],
+  },
   addons: [
     { id: 'mat', name: 'Tapis anti-fatigue', sub: 'Pour les moments debout', price: 39 },
     { id: 'arm1', name: 'Bras d\'écran simple', sub: 'Écran à hauteur des yeux, debout comme assis', price: 79 },
@@ -770,7 +767,7 @@ function renderShop() {
   }).join('');
   $('[data-g-size]').hidden = !hasDesk(); $('[data-g-color]').hidden = !hasDesk();
   $('[data-sizes]').innerHTML = CONFIG.sizes.map(s => `<button class="${s.id === state.size ? 'on' : ''}" data-size="${s.id}">${s.name}${s.extra ? ` <small>+${eur(s.extra)}</small>` : ''}</button>`).join('');
-  $('[data-colors]').innerHTML = CONFIG.colors.map(c => `<button class="${c.id === state.color ? 'on' : ''}" data-color="${c.id}" style="--c:${c.c}"><i></i>${c.name.split(' /')[0]}</button>`).join('');
+  $('[data-colors]').innerHTML = CONFIG.colors.map(c => `<button class="${c.id === state.color ? 'on' : ''}" data-color="${c.id}" style="--c:${c.c}"><i style="box-shadow:inset 0 0 0 3px ${c.ring},0 0 0 1px rgba(0,0,0,.15)"></i>${c.name}</button>`).join('');
   $('[data-size-name]').textContent = CONFIG.sizes.find(s => s.id === state.size).name;
   $('[data-color-name]').textContent = CONFIG.colors.find(c => c.id === state.color).name;
   $('[data-addons]').innerHTML = CONFIG.addons.map(a => `<label class="addon"><input type="checkbox" data-addon="${a.id}" ${state.addons.has(a.id) ? 'checked' : ''}><span>${a.name}<small>${a.sub}</small></span><b>+${eur(a.price)}</b></label>`).join('');
@@ -781,14 +778,45 @@ function renderShop() {
   $('[data-save]').hidden = !(save > 0);
   $('[data-x3]').textContent = eur(Math.round(lineTotal() / 3 * 100) / 100);
   $('[data-total]').textContent = eur(lineTotal());
+  const V = {
+    pack: { t: 'Bureau électrique + tapis de marche', chips: ['Moteur < 45 dB', '4 mémoires', 'Tapis de 10,5 cm', 'Garantie 5 ans'], parcels: '3 colis' },
+    desk: { t: 'Bureau assis-debout électrique', chips: ['Double moteur', '62,5 – 127,5 cm', '4 mémoires', 'Garantie 5 ans'], parcels: '2 colis' },
+    pad: { t: 'Tapis de marche sous bureau', chips: ['10,5 cm d\'épaisseur', '1 – 6 km/h', '57 dB max.', 'Garantie 5 ans'], parcels: '1 colis' },
+  }[state.offer];
+  $('[data-shop-title]').textContent = V.t;
+  $('[data-chips]').innerHTML = V.chips.map(c => `<span>${c.replace('<', '&lt;')}</span>`).join('');
+  $('[data-parcels]').textContent = V.parcels;
+  renderGallery();
   $$('[data-offer]').forEach(b => b.onclick = () => { state.offer = b.dataset.offer; renderShop(); });
   $$('[data-size]').forEach(b => b.onclick = () => { state.size = b.dataset.size; renderShop(); });
   $$('[data-color]').forEach(b => b.onclick = () => { state.color = b.dataset.color; paint(); renderShop(); });
   $$('[data-addon]').forEach(i => i.onchange = () => { i.checked ? state.addons.add(i.dataset.addon) : state.addons.delete(i.dataset.addon); renderShop(); });
 }
+/* Galerie : n'affiche que ce qui correspond à la formule et à la finition choisies */
+let galKey = '';
+function renderGallery() {
+  const o = state.offer, c = CONFIG.colors.find(x => x.id === state.color), G = CONFIG.gallery;
+  const deskImg = [c.img, `Bureau ${c.name.toLowerCase()}`];
+  const list = o === 'pad' ? G.pad
+    : o === 'desk' ? [deskImg, ...G.desk]
+    : [...G.pack, deskImg, G.pad[0], G.pad[1], ...G.desk];
+  const key = o + '|' + c.id;
+  if (key === galKey) return;
+  const offerChanged = !galKey.startsWith(o + '|');
+  galKey = key;
+  // nouvelle formule → 1re photo ; nouvelle finition → la photo du bureau choisi
+  const main = offerChanged ? list[0] : deskImg;
+  const show = (src, alt) => {
+    const m = $('[data-gal-main]'); m.src = src; m.alt = alt;
+    $$('[data-gal] button').forEach(b => b.classList.toggle('on', b.dataset.src === src));
+  };
+  $('[data-gal]').innerHTML = list.map(([src, alt]) => `<button data-src="${src}" data-alt="${alt}"><img src="${src}" alt="${alt}" loading="lazy"></button>`).join('');
+  $$('[data-gal] button').forEach(b => b.onclick = () => show(b.dataset.src, b.dataset.alt));
+  show(main[0], main[1]);
+}
 function paint() {
   const c = CONFIG.colors.find(c => c.id === state.color);
-  $$('.scene').forEach(s => { s.style.setProperty('--top', c.top); s.style.setProperty('--frame', c.frame); s.style.setProperty('--frame-d', c.frame === '#f2f2f0' ? '#c9c9c5' : '#111'); });
+  $$('.scene').forEach(s => { s.style.setProperty('--top', c.top); s.style.setProperty('--frame', c.frame); s.style.setProperty('--frame-d', c.light ? '#9fa3a6' : '#111'); });
 }
 function renderGlobalPrices() {
   const p = CONFIG.offers.find(o => o.id === 'pack'), cmp = compareOf(p);
@@ -905,8 +933,6 @@ const seq = ['assis', 'debout', 'marche']; let si = 2;
 setInterval(() => { if (!posScene._user && !document.hidden) { si = (si + 1) % 3; applyPos(seq[si]); } }, 3200);
 // Compteur de pas animé dans le hero
 let steps = 4180; setInterval(() => { steps += 2; $$('[data-steps]').forEach(e => e.textContent = steps.toLocaleString('fr-BE')); }, 700);
-// Galerie
-$$('[data-gal] button').forEach(b => b.onclick = () => { $$('[data-gal] button').forEach(x => x.classList.toggle('on', x === b)); $('[data-gal-main]').src = b.dataset.src; $('[data-gal-main]').alt = $('img', b).alt; });
 // Barre d'achat collante
 new IntersectionObserver(([e]) => $('[data-sticky]').classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe($('[data-add]'));
 </script>
