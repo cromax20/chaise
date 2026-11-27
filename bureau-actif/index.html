@@ -80,7 +80,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero::before{width:520px;height:520px;background:#cfe3d7;top:-140px;right:8%}
 .hero::after{width:420px;height:420px;background:#f6d8c4;bottom:-160px;left:-80px;animation-duration:22s}
 @keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
-.photo-hero{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(24,32,29,.18);aspect-ratio:742/584;background:#eee}
+.photo-hero{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(24,32,29,.18);aspect-ratio:897/681;background:#eee}
 .photo-hero img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-in-out infinite alternate;transform-origin:55% 70%}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.5%,-1%)}}
 .photo-hero__light{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,246,225,.35) 45%,transparent 60%);background-size:250% 100%;animation:light 9s ease-in-out infinite;mix-blend-mode:soft-light;pointer-events:none}
@@ -91,10 +91,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .live{width:10px;height:10px;border-radius:50%;background:#2f8f5b;box-shadow:0 0 0 0 rgba(47,143,91,.6);animation:live 1.6s infinite}
 @keyframes live{70%{box-shadow:0 0 0 10px rgba(47,143,91,0)}100%{box-shadow:0 0 0 0 rgba(47,143,91,0)}}
 @media (prefers-reduced-motion:reduce){.hero::before,.hero::after,.photo-hero img,.photo-hero__light,.live{animation:none}}
-@media (max-width:480px){.scene__badge--c{display:none}}
+@media (max-width:480px){.scene__badge--c{display:none}.photo-hero .scene__badge--b{top:18px;bottom:auto;right:12px}.photo-hero .scene__badge--a{left:12px}}
 
 /* Galerie boutique */
-.gallery__main{background:#fff;border-radius:24px;overflow:hidden;aspect-ratio:742/584;box-shadow:var(--shadow);display:grid;place-items:center}
+.gallery__main{background:#fff;border-radius:24px;overflow:hidden;aspect-ratio:897/681;box-shadow:var(--shadow);display:grid;place-items:center}
 .gallery__main img{width:100%;height:100%;object-fit:contain}
 .gallery__thumbs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-top:10px}
 .gallery__thumbs button{background:#fff;border-radius:10px;aspect-ratio:1;overflow:hidden;border:2px solid transparent;padding:3px}
@@ -357,7 +357,7 @@ footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:10
     </div>
     <div class="hero__visual">
       <div class="photo-hero">
-        <img src="img/scene-bureau-tapis.jpg" alt="Bureau assis-debout électrique avec le tapis de marche installé dessous dans le sens de la marche, dans un intérieur lumineux" width="742" height="584">
+        <img src="img/scene-pack.webp" alt="Bureau assis-debout électrique avec le tapis de marche installé dessous, dans un intérieur baigné de lumière" width="897" height="681">
         <span class="photo-hero__light" aria-hidden="true"></span>
         <div class="scene__badge scene__badge--a">👟<div><b data-steps>4 180</b><small>pas aujourd'hui</small></div></div>
         <div class="scene__badge scene__badge--b"><i class="live"></i><div><b>En marche</b><small>3,0 km/h · 57 dB max.</small></div></div>
@@ -424,9 +424,9 @@ footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:10
   <div class="wrap shop">
     <div class="shop__visual">
       <div class="gallery">
-        <div class="gallery__main"><img src="img/scene-bureau-tapis.jpg" alt="Le pack installé" data-gal-main></div>
+        <div class="gallery__main"><img src="img/scene-pack.webp" alt="Le pack installé" data-gal-main></div>
         <div class="gallery__thumbs" data-gal>
-          <button class="on" data-src="img/scene-bureau-tapis.jpg"><img src="img/scene-bureau-tapis.jpg" alt="Le pack installé"></button>
+          <button class="on" data-src="img/scene-pack.webp"><img src="img/scene-pack.webp" alt="Le pack installé"></button>
           <button data-src="img/bureau-noyer-noir.webp"><img src="img/bureau-noyer-noir.webp" alt="Bureau noyer, cadre noir"></button>
           <button data-src="img/bureau-blanc.webp"><img src="img/bureau-blanc.webp" alt="Bureau cadre clair"></button>
           <button data-src="img/tapis-3-4.webp"><img src="img/tapis-3-4.webp" alt="Tapis de marche"></button>
@@ -630,11 +630,11 @@ const CONFIG = {
   brand: 'Movéa',
   desk: { min: 62.5, max: 127.5, tbc: false },  // piètement double moteur (62,5 – 127,5 cm)
   padHeight: 10.5,                               // épaisseur du tapis (cm)
-  prices: { desk: 479, pad: 389 },               // prix à l'unité TTC réellement pratiqués (servent au prix barré du pack)
+  prices: { desk: 499, pad: 399 },               // prix à l'unité TTC réellement pratiqués (servent au prix barré du pack)
   offers: [
-    { id: 'pack', title: 'Pack Bureau actif', sub: 'Bureau électrique + tapis de marche', price: 799, items: ['desk', 'pad'], tag: 'Le plus choisi', default: true },
-    { id: 'desk', title: 'Bureau seul', sub: 'Bureau assis-debout double moteur', price: 479, items: ['desk'] },
-    { id: 'pad', title: 'Tapis de marche seul', sub: 'Se glisse sous votre bureau actuel', price: 389, items: ['pad'] },
+    { id: 'pack', title: 'Pack Bureau actif', sub: 'Bureau électrique + tapis de marche', price: 849, items: ['desk', 'pad'], tag: 'Le plus choisi', default: true },
+    { id: 'desk', title: 'Bureau seul', sub: 'Bureau assis-debout double moteur', price: 499, items: ['desk'] },
+    { id: 'pad', title: 'Tapis de marche seul', sub: 'Se glisse sous votre bureau actuel', price: 399, items: ['pad'] },
   ],
   sizes: [ { id: '140', name: '140 × 70 cm', extra: 0 }, { id: '160', name: '160 × 80 cm', extra: 40 } ],
   colors: [
