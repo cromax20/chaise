@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Movéa — Pack Bureau actif</title>
+<meta name="description" content="Le pack Bureau actif : bureau assis-debout électrique + tapis de marche sous bureau. Marchez en travaillant. Livraison offerte, 30 jours d'essai, paiement en 3×.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f4ee; --surface:#fff; --ink:#18201d; --muted:#5e6964; --line:#e6e1d8;
+  --green:#1f4d3f; --green-2:#163a30; --green-soft:#e6efe9; --cta:#e8743b; --cta-2:#d2622b;
+  --gold:#f3b33d; --ok:#2f8f5b; --warn:#c8502d; --r:18px; --shadow:0 14px 40px rgba(24,32,29,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:76px}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+[hidden]{display:none!important}
+main{overflow-x:clip}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:14px}
+h3{line-height:1.25}
+.eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.lead{color:var(--muted);font-size:1.08rem}
+.center{text-align:center}.center .lead{margin:0 auto;max-width:640px}
+section{padding:88px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:999px;font-weight:600;transition:transform .15s,background .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn--cta{background:var(--cta);color:#fff;box-shadow:0 10px 24px rgba(232,116,59,.32)}
+.btn--cta:hover{background:var(--cta-2)}
+.btn--ghost{border:1.5px solid currentColor}
+.btn--xl{width:100%;padding:18px;font-size:1.05rem}
+.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow)}
+
+/* Annonce + nav */
+.announce{background:var(--green-2);color:#e8f1ec;font-size:.84rem;text-align:center;padding:9px 16px}
+.announce b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:40;background:rgba(247,244,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{font-family:Fraunces,serif;font-size:1.5rem;font-weight:600}
+.logo span{color:var(--cta)}
+.links{display:flex;gap:26px;color:var(--muted);font-size:.93rem}
+.links a:hover{color:var(--ink)}
+.cartbtn{position:relative;padding:8px}
+.cartbtn i{position:absolute;top:0;right:-2px;background:var(--cta);color:#fff;font-style:normal;font-size:.68rem;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center}
+@media (max-width:860px){.links{display:none}}
+
+/* Hero */
+.hero{padding:56px 0 72px;background:radial-gradient(900px 420px at 85% 10%,#e3ece6 0%,transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.2vw,4.1rem);margin:16px 0 18px}
+.hero h1 em{font-style:italic;color:var(--green)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);padding:6px 14px 6px 6px;border-radius:999px;font-size:.85rem;font-weight:500}
+.pill{max-width:100%}@media (max-width:480px){.pill{font-size:.78rem;align-items:flex-start;border-radius:16px}}
+.pill b{flex-shrink:0;background:var(--cta);color:#fff;padding:2px 10px;border-radius:999px;font-size:.78rem}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 26px}
+.hero__trust{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.87rem;color:var(--muted)}
+.hero__trust span::before{content:"✓ ";color:var(--ok);font-weight:700}
+.scene{position:relative;background:linear-gradient(180deg,#fbfaf7,#efe9df);border-radius:28px;padding:18px 18px 0;box-shadow:var(--shadow);overflow:hidden}
+.scene__badge{position:absolute;background:var(--surface);border-radius:14px;padding:10px 14px;box-shadow:0 10px 26px rgba(0,0,0,.1);font-size:.82rem;display:flex;gap:10px;align-items:center;z-index:2}
+.scene__badge b{display:block;font-size:1.05rem}
+.scene__badge small{color:var(--muted)}
+.scene__badge--a{top:18px;left:18px}
+.scene__badge--b{top:18px;right:18px}
+.modes{display:flex;gap:6px;justify-content:center;padding:14px 0 18px}
+.modes button{padding:8px 16px;border-radius:999px;font-size:.85rem;font-weight:600;color:var(--muted);background:rgba(255,255,255,.7)}
+.modes button.on{background:var(--green);color:#fff}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.hero__visual{order:-1}}
+@media (max-width:480px){.scene__badge{font-size:.72rem;padding:8px 10px}.scene__badge b{font-size:.9rem}}
+
+/* Illustration */
+.desk-top,.desk-inner{transition:transform 1.1s cubic-bezier(.6,0,.2,1)}
+.belt{stroke-dasharray:6 10;animation:belt .7s linear infinite paused}
+.walking .belt{animation-play-state:running}
+@keyframes belt{to{stroke-dashoffset:-16}}
+.pad{transition:opacity .6s}
+.chair{transition:opacity .6s,transform .8s}
+.walking .leg1{animation:stepA .7s ease-in-out infinite alternate}.walking .leg2{animation:stepA .7s ease-in-out infinite alternate-reverse}
+@keyframes stepA{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+@media (prefers-reduced-motion:reduce){.belt,.leg1,.leg2{animation:none}.desk-top,.desk-inner{transition:none}}
+
+/* Ruban */
+.ribbon{background:var(--green);color:#fff;overflow:hidden;padding:14px 0}
+.ribbon__track{display:flex;gap:34px;width:max-content;animation:rib 32s linear infinite;font-weight:600;white-space:nowrap}
+.ribbon__track span:nth-child(even){color:var(--gold)}
+@keyframes rib{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ribbon__track{animation:none}}
+
+/* Problème */
+.pain{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.stats{display:grid;gap:14px}
+.stat{display:flex;gap:18px;align-items:center;padding:22px}
+.stat b{font-family:Fraunces,serif;font-size:2.2rem;color:var(--green);min-width:110px;line-height:1}
+.stat span{color:var(--muted);font-size:.95rem}
+.stat small{display:block;font-size:.72rem;margin-top:4px}
+@media (max-width:860px){.pain{grid-template-columns:1fr}}
+
+/* Boutique */
+.shop{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}
+.shop__visual{position:sticky;top:86px}
+.shop__visual .scene{padding-bottom:0}
+.shop__chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.shop__chips span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.8rem;font-weight:500}
+.rating{font-size:.9rem;color:var(--muted);margin-bottom:6px}
+.shop h2{font-size:clamp(1.8rem,3.4vw,2.5rem)}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:6px 0 4px}
+.price b{font-size:2.1rem;font-weight:700;letter-spacing:-.02em}
+.price s{color:var(--muted);font-size:1.1rem}
+.price em{font-style:normal;background:#e6f3ea;color:var(--ok);font-weight:700;font-size:.82rem;padding:4px 10px;border-radius:999px}
+.klarna{font-size:.88rem;color:var(--muted);margin-bottom:20px}
+.group{margin-bottom:20px}
+.group__label{font-weight:600;font-size:.92rem;margin-bottom:10px;display:flex;justify-content:space-between}
+.group__label small{font-weight:400;color:var(--muted)}
+.offers{display:grid;gap:10px}
+.offer{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-align:left;width:100%;padding:16px;border:2px solid var(--line);border-radius:16px;background:var(--surface);transition:border-color .15s}
+.offer.on{border-color:var(--green);background:var(--green-soft)}
+.offer__radio{width:20px;height:20px;border-radius:50%;border:2px solid #b7c2bc;display:grid;place-items:center}
+.offer.on .offer__radio{border-color:var(--green)}
+.offer.on .offer__radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--green)}
+.offer__t{font-weight:700;display:block}
+.offer__s{font-size:.83rem;color:var(--muted);display:block}
+.offer__p{text-align:right;font-weight:700;display:flex;flex-direction:column}
+.offer__p s{font-weight:400;color:var(--muted);font-size:.8rem}
+.offer__p small{color:var(--ok);font-size:.76rem}
+.offer__tag{position:absolute;top:-11px;right:14px;background:var(--cta);color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{padding:10px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-weight:500;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.seg button.on{border-color:var(--ink)}
+.seg i{width:16px;height:16px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.addons{display:grid;gap:8px}
+.addon{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px dashed var(--line);border-radius:14px;background:var(--surface);cursor:pointer}
+.addon input{accent-color:var(--green);width:18px;height:18px}
+.addon span{flex:1;font-size:.92rem}
+.addon small{display:block;color:var(--muted);font-size:.78rem}
+.addon b{font-size:.92rem}
+.addon:has(input:checked){border-style:solid;border-color:var(--green)}
+.eta{text-align:center;font-size:.88rem;margin:12px 0}
+.pay{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:16px}
+.pay span{font-size:.7rem;font-weight:700;border:1px solid var(--line);background:#fff;padding:4px 8px;border-radius:6px;color:var(--muted)}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:14px;text-align:center;font-size:1.25rem}
+.mini span{display:block;font-size:.72rem;color:var(--muted);line-height:1.3;margin-top:4px}
+@media (max-width:920px){.shop{grid-template-columns:1fr}.shop__visual{position:static}}
+
+/* Outils */
+.tools{background:var(--green-2);color:#eef4f0}
+.tools .eyebrow{color:var(--gold)}
+.tools .lead{color:#b9cbc2}
+.tools__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.tool{background:#fff;color:var(--ink);border-radius:22px;padding:28px}
+.tool h3{font-family:Fraunces,serif;font-size:1.4rem;margin-bottom:4px}
+.tool > p{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.field{margin-bottom:16px}
+.field label{display:flex;justify-content:space-between;font-weight:600;font-size:.9rem;margin-bottom:8px}
+.field output{color:var(--green);font-weight:700}
+.field input[type=range]{width:100%;accent-color:var(--green)}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.res div{background:var(--bg);border-radius:14px;padding:14px;text-align:center}
+.res b{display:block;font-family:Fraunces,serif;font-size:1.5rem;line-height:1.1}
+.res span{font-size:.75rem;color:var(--muted)}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:.9rem;font-weight:600}
+.verdict.ok{background:#e6f3ea;color:var(--ok)}
+.verdict.ko{background:#fbe9e2;color:var(--warn)}
+.ruler{position:relative;height:14px;border-radius:14px;background:var(--line);margin:18px 0 6px}
+.ruler i{position:absolute;top:0;bottom:0;border-radius:14px;background:#cfe0d6}
+.ruler b{position:absolute;top:50%;width:4px;height:24px;border-radius:2px;transform:translate(-50%,-50%);background:var(--ink)}
+.ruler__lab{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
+.note{font-size:.74rem;color:var(--muted);margin-top:12px}
+@media (max-width:900px){.tools__grid{grid-template-columns:1fr}}
+@media (max-width:420px){.res b{font-size:1.2rem}}
+
+/* Bénéfices */
+.bens{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.ben{padding:26px}
+.ben__i{width:46px;height:46px;border-radius:14px;background:var(--green-soft);display:grid;place-items:center;font-size:1.4rem}
+.ben h3{margin:14px 0 6px}
+.ben p{color:var(--muted);font-size:.93rem}
+@media (max-width:980px){.bens{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.bens{grid-template-columns:1fr}}
+
+/* Comparatif */
+.tw{overflow-x:auto;margin-top:36px}
+.cmp{width:100%;min-width:720px;border-collapse:collapse;background:var(--surface);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.cmp th,.cmp td{padding:16px 14px;border-bottom:1px solid var(--line);text-align:center;font-size:.93rem}
+.cmp th{font-size:.84rem;color:var(--muted);font-weight:600}
+.cmp td:first-child,.cmp th:first-child{text-align:left}
+.cmp .us{background:var(--green-soft);font-weight:700;color:var(--green)}
+.cmp th.us{background:var(--green);color:#fff}
+.y{color:var(--ok);font-weight:700}.n{color:#b5b0a6}
+
+/* Onglets */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;margin-top:30px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{padding:14px 18px;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;font-weight:500}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--green)}
+.panel{padding:26px 0 0;max-width:780px;min-height:200px}
+.panel table{width:100%;border-collapse:collapse}
+.panel td{padding:12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.panel td:first-child{color:var(--muted);width:42%;padding-right:14px}
+.panel ul{list-style:none}
+.panel li{padding:12px 0;border-bottom:1px solid var(--line)}
+.panel li::before{content:"✓ ";color:var(--ok);font-weight:700}
+.tbc{font-size:.75rem;background:#fff3d6;color:#8a6200;padding:2px 7px;border-radius:6px;margin-left:6px;white-space:nowrap}
+
+/* Garantie / FAQ / final */
+.guar{background:linear-gradient(120deg,#e6efe9,#f3efe6)}
+.guar .wrap{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center}
+.seal{width:160px;height:160px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 0 0 10px rgba(31,77,63,.15)}
+.seal b{font-family:Fraunces,serif;font-size:3.2rem;line-height:1;display:block}
+.seal span{font-size:.75rem;font-weight:700;letter-spacing:.1em}
+.guar p{color:var(--muted);margin:8px 0 20px;max-width:620px}
+@media (max-width:700px){.guar .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.faq{max-width:800px;margin:30px auto 0}
+details{border-top:1px solid var(--line);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.3rem;line-height:1;color:var(--muted)}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);margin-top:10px}
+.final{background:var(--green);color:#fff;text-align:center}
+.final h2{color:#fff}
+.final p{color:#cfe0d6;margin-bottom:26px}
+footer{background:var(--green-2);color:#a9bdb3;padding:44px 0 28px;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+footer a{margin-right:18px;display:inline-block}footer .wrap > span{max-width:100%;line-height:2}
+
+/* Sticky + panier */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:45;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:10px 16px;box-shadow:0 -8px 24px rgba(0,0,0,.07);transform:translateY(110%);transition:transform .3s}
+.sticky.on{transform:none}
+.sticky div{flex:1;font-size:.88rem;line-height:1.3}
+.sticky s{color:var(--muted)}
+@media (min-width:900px){.sticky{left:auto;right:24px;bottom:24px;border-radius:999px;border:1px solid var(--line);padding:8px 8px 8px 20px;max-width:430px}body{padding-bottom:0}}
+.ov{position:fixed;inset:0;background:rgba(24,32,29,.45);opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.ov.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--bg);z-index:70;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer__h{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer__ship{padding:12px 20px;background:#e6f3ea;color:var(--ok);font-weight:600;font-size:.88rem}
+.drawer__items{flex:1;overflow:auto;padding:6px 20px}
+.line{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.line small{display:block;color:var(--muted);font-size:.8rem}
+.line button{font-size:.75rem;color:var(--muted);text-decoration:underline;display:block;margin-left:auto}
+.drawer__f{padding:16px 20px 22px;background:#fff;border-top:1px solid var(--line)}
+.drawer__t{display:flex;justify-content:space-between;font-size:1.1rem;margin-bottom:4px}
+.drawer__k{font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.toast{position:fixed;left:50%;top:84px;transform:translate(-50%,-16px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:.3s;z-index:80;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="announce">🚚 Livraison offerte BE · FR · NL &nbsp;·&nbsp; <b>Offre de lancement</b> sur le pack &nbsp;·&nbsp; 30 jours pour essayer</div>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Movéa<span>.</span></a>
+    <div class="links"><a href="#pack">Le pack</a><a href="#outils">Compatibilité</a><a href="#comparatif">Comparatif</a><a href="#fiche">Fiche technique</a><a href="#faq">FAQ</a></div>
+    <button class="cartbtn" data-open-cart aria-label="Panier">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><i data-count>0</i>
+    </button>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><b data-save-pct>-25%</b> Pack Bureau actif : bureau + tapis de marche</span>
+      <h1>Marchez 5 km par jour <em>sans quitter votre bureau.</em></h1>
+      <p class="lead">Un bureau électrique qui monte en quelques secondes, un tapis de marche ultra-plat qui se glisse dessous. Vous travaillez, vous bougez, et votre dos vous dit merci.</p>
+      <div class="hero__cta">
+        <a href="#pack" class="btn btn--cta">Voir le pack · <span data-pack-price>--</span></a>
+        <a href="#outils" class="btn btn--ghost">Est-ce compatible avec ma taille ?</a>
+      </div>
+      <div class="hero__trust"><span>Livraison offerte</span><span>Paiement en 3× sans frais</span><span>30 jours d'essai</span><span>Garantie 2 ans</span></div>
+    </div>
+    <div class="hero__visual">
+      <div class="scene" data-scene="hero">
+        <div class="scene__badge scene__badge--a">👟<div><b data-steps>0</b><small>pas aujourd'hui</small></div></div>
+        <div class="scene__badge scene__badge--b">📏<div><b data-height>--</b><small>hauteur du bureau</small></div></div>
+        <div data-illu></div>
+        <div class="modes" data-modes>
+          <button data-mode="assis">Assis</button><button data-mode="debout">Debout</button><button data-mode="marche" class="on">En marche</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div class="ribbon__track">
+  <span>Bureau électrique</span><span>✦</span><span>Tapis de marche ultra-plat</span><span>✦</span><span>Mémoires de hauteur</span><span>✦</span><span>Silencieux</span><span>✦</span><span>Livraison offerte</span><span>✦</span><span>30 jours d'essai</span><span>✦</span>
+  <span>Bureau électrique</span><span>✦</span><span>Tapis de marche ultra-plat</span><span>✦</span><span>Mémoires de hauteur</span><span>✦</span><span>Silencieux</span><span>✦</span><span>Livraison offerte</span><span>✦</span><span>30 jours d'essai</span><span>✦</span>
+</div></div>
+
+<!-- PROBLÈME -->
+<section>
+  <div class="wrap pain">
+    <div>
+      <p class="eyebrow">Le problème</p>
+      <h2>Votre journée de travail se passe assise. Votre corps n'est pas fait pour ça.</h2>
+      <p class="lead">Dos raide, nuque tendue, coup de fatigue à 15 h, et le soir, plus l'énergie d'aller marcher. Ce n'est pas un manque de volonté : c'est votre poste de travail.</p>
+    </div>
+    <div class="stats">
+      <div class="stat card"><b>150 min</b><span>d'activité modérée par semaine : c'est le minimum recommandé pour un adulte.<small>Source : Organisation mondiale de la Santé</small></span></div>
+      <div class="stat card"><b>30 min</b><span>de marche lente par jour sous le bureau suffisent pour atteindre cet objectif.</span></div>
+      <div class="stat card"><b>3 positions</b><span>assis, debout, en marche : changez au fil de la journée, sans effort.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOUTIQUE -->
+<section id="pack" style="padding-top:40px">
+  <div class="wrap shop">
+    <div class="shop__visual">
+      <div class="scene" data-scene="shop"><div data-illu></div><div class="modes" data-modes><button data-mode="assis">Assis</button><button data-mode="debout">Debout</button><button data-mode="marche" class="on">En marche</button></div></div>
+      <div class="shop__chips"><span>Moteur silencieux</span><span>Mémoires de hauteur</span><span>Tapis télécommandé</span><span>Se range sous le lit</span></div>
+    </div>
+    <div>
+      <p class="rating" data-rating hidden></p>
+      <p class="eyebrow">Le pack Bureau actif</p>
+      <h2>Bureau électrique + tapis de marche</h2>
+      <div class="price"><b data-price>--</b><s data-compare></s><em data-save></em></div>
+      <p class="klarna">ou 3 × <b data-x3>--</b> sans frais</p>
+
+      <div class="group"><div class="group__label">1. Votre formule</div><div class="offers" data-offers></div></div>
+      <div class="group" data-g-size><div class="group__label">2. Taille du plateau <small data-size-name></small></div><div class="seg" data-sizes></div></div>
+      <div class="group" data-g-color><div class="group__label">3. Finition <small data-color-name></small></div><div class="seg" data-colors></div></div>
+      <div class="group"><div class="group__label">Accessoires conseillés</div><div class="addons" data-addons></div></div>
+
+      <button class="btn btn--cta btn--xl" data-add>Ajouter au panier · <span data-total>--</span></button>
+      <p class="eta">📦 Livré entre le <b data-eta>--</b> · 2 colis, suivi inclus</p>
+      <div class="pay"><span>VISA</span><span>Mastercard</span><span>Bancontact</span><span>PayPal</span><span>Apple Pay</span><span>Klarna 3×</span></div>
+      <div class="mini card"><div>🚚<span>Livraison<br>offerte</span></div><div>↩️<span>30 jours<br>d'essai</span></div><div>🛡️<span>Garantie<br>2 ans</span></div><div>🔒<span>Paiement<br>sécurisé</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTILS -->
+<section class="tools" id="outils">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Avant d'acheter</p>
+      <h2>Vérifiez en 10 secondes.</h2>
+      <p class="lead">Le pack convient-il à votre taille, et combien allez-vous vraiment marcher ?</p>
+    </div>
+    <div class="tools__grid">
+      <div class="tool">
+        <h3>Compatibilité avec votre taille</h3>
+        <p>Avec le tapis dessous, vous êtes plus haut : le bureau doit monter en conséquence.</p>
+        <div class="field"><label for="t-h">Votre taille <output data-o="h">175 cm</output></label><input id="t-h" type="range" min="150" max="200" value="175" data-c="h"></div>
+        <div class="res">
+          <div><b data-r="sit">--</b><span>Assis</span></div>
+          <div><b data-r="stand">--</b><span>Debout</span></div>
+          <div><b data-r="walk">--</b><span>En marche</span></div>
+        </div>
+        <div class="ruler"><i data-r="range"></i><b data-r="pin"></b></div>
+        <div class="ruler__lab"><span>60 cm</span><span data-r="rangeLab">Plage du bureau</span><span>135 cm</span></div>
+        <div class="verdict" data-r="verdict"></div>
+        <p class="note">Hauteur de coude estimée à partir de votre taille. Ajustez finement avec les mémoires du bureau.</p>
+      </div>
+      <div class="tool">
+        <h3>Combien allez-vous marcher ?</h3>
+        <p>Une marche lente suffit : on peut taper, lire et être en visio.</p>
+        <div class="field"><label for="t-m">Minutes de marche par jour <output data-o="m">45 min</output></label><input id="t-m" type="range" min="15" max="180" step="15" value="45" data-c="m"></div>
+        <div class="field"><label for="t-v">Vitesse <output data-o="v">3 km/h</output></label><input id="t-v" type="range" min="1.5" max="5" step="0.5" value="3" data-c="v"></div>
+        <div class="field"><label for="t-w">Votre poids <output data-o="w">75 kg</output></label><input id="t-w" type="range" min="45" max="130" value="75" data-c="w"></div>
+        <div class="res">
+          <div><b data-r="steps">--</b><span>pas / jour</span></div>
+          <div><b data-r="km">--</b><span>km / semaine*</span></div>
+          <div><b data-r="kcal">--</b><span>kcal / semaine*</span></div>
+        </div>
+        <p class="note">*Sur 5 jours ouvrés. Estimations : longueur de pas déduite d'une taille de 175 cm, dépense calculée avec les valeurs MET usuelles de la marche. Ce ne sont pas des promesses de résultat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÉNÉFICES -->
+<section>
+  <div class="wrap">
+    <div class="center"><p class="eyebrow">Au quotidien</p><h2>Ce qui change vraiment</h2></div>
+    <div class="bens">
+      <div class="ben card"><div class="ben__i">🧍</div><h3>Moins de raideurs</h3><p>Alterner assis, debout et marche évite de rester figé des heures dans la même position.</p></div>
+      <div class="ben card"><div class="ben__i">⚡</div><h3>Plus d'énergie</h3><p>Une marche lente garde le corps en éveil, sans vous essouffler ni vous déconcentrer.</p></div>
+      <div class="ben card"><div class="ben__i">🗓️</div><h3>Du sport sans y penser</h3><p>L'activité s'intègre à vos heures de travail. Plus besoin de trouver du temps en plus.</p></div>
+      <div class="ben card"><div class="ben__i">🏠</div><h3>Peu d'encombrement</h3><p>Le tapis se glisse sous le bureau ou sous un lit. Pas de tapis de course géant au salon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIF -->
+<section id="comparatif" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="center"><p class="eyebrow">Comparatif</p><h2>Pourquoi le pack plutôt qu'autre chose ?</h2></div>
+    <div class="tw">
+      <table class="cmp">
+        <thead><tr><th></th><th class="us">Pack Movéa</th><th>Bureau classique</th><th>Bureau assis-debout seul</th><th>Abonnement salle de sport</th></tr></thead>
+        <tbody>
+          <tr><td>Bouger pendant le travail</td><td class="us">✓</td><td class="n">—</td><td>Debout seulement</td><td class="n">—</td></tr>
+          <tr><td>Aucun temps en plus à trouver</td><td class="us">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">—</td></tr>
+          <tr><td>3 positions : assis, debout, marche</td><td class="us">✓</td><td class="n">—</td><td>2 positions</td><td class="n">—</td></tr>
+          <tr><td>Hauteur vérifiée pour marcher dessous</td><td class="us">✓</td><td class="n">—</td><td>Rarement</td><td class="n">—</td></tr>
+          <tr><td>Coût sur 2 ans</td><td class="us" data-pack-price>--</td><td>100–300 €</td><td>300–500 €</td><td>≈ 700–1 200 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note center">Fourchettes indicatives observées en Belgique et en France.</p>
+  </div>
+</section>
+
+<!-- FICHE TECHNIQUE -->
+<section id="fiche">
+  <div class="wrap">
+    <p class="eyebrow">Fiche technique</p>
+    <h2>Tout savoir avant de commander</h2>
+    <div class="tabs" role="tablist" data-tabs></div>
+    <div class="panel" role="tabpanel" data-panel></div>
+  </div>
+</section>
+
+<!-- AVIS (masqué tant qu'aucun vrai avis) -->
+<section id="avis" data-reviews-sec hidden style="background:var(--surface)">
+  <div class="wrap"><div class="center"><p class="eyebrow">Avis clients</p><h2>Ils marchent en travaillant</h2></div><div data-reviews></div></div>
+</section>
+
+<!-- GARANTIE -->
+<section class="guar">
+  <div class="wrap">
+    <div class="seal"><div><b>30</b><span>JOURS<br>D'ESSAI</span></div></div>
+    <div>
+      <h2>Essayez-le chez vous pendant 30 jours.</h2>
+      <p>Travaillez avec, marchez avec, adaptez vos journées. Si le pack ne vous convient pas, contactez-nous dans les 30 jours : nous organisons le retour et vous remboursons. Garantie 2 ans sur le bureau et le tapis.</p>
+      <a href="#pack" class="btn btn--cta">Je commande mon pack</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center"><p class="eyebrow">FAQ</p><h2>Vos questions</h2></div>
+    <div class="faq">
+      <details><summary>Peut-on vraiment travailler en marchant ?</summary><p>Oui, à vitesse lente (2 à 3 km/h). Taper, lire, répondre à des e-mails ou être en visio se fait naturellement après quelques jours d'adaptation. Pour les tâches qui demandent beaucoup de précision, passez simplement en mode debout ou assis.</p></details>
+      <details><summary>Le tapis est-il bruyant ?</summary><p>Il est conçu pour un usage en intérieur, sous un bureau. Le niveau sonore exact figure dans la fiche technique.</p></details>
+      <details><summary>Le bureau monte-t-il assez haut pour marcher dessous ?</summary><p>C'est le point le plus important, et nous l'avons choisi pour ça. Utilisez l'outil « Compatibilité » plus haut : il calcule la hauteur dont vous avez besoin selon votre taille et la compare à la plage du bureau.</p></details>
+      <details><summary>Le montage est-il compliqué ?</summary><p>Le bureau se monte avec les outils fournis et la notice illustrée. Le tapis arrive pré-assemblé : il suffit de le brancher.</p></details>
+      <details><summary>Comment se passe la livraison ?</summary><p>Le pack arrive en 2 colis, livrés gratuitement avec suivi. Comptez le délai indiqué au moment de la commande.</p></details>
+      <details><summary>Et si ça ne me convient pas ?</summary><p>Vous avez 30 jours pour l'essayer. Écrivez-nous et nous organisons le retour. Le bureau et le tapis sont aussi garantis 2 ans.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Demain, votre journée de travail peut aussi être votre marche du jour.</h2>
+    <p>Pack Bureau actif à <b data-pack-price>--</b> au lieu de <s data-pack-compare>--</s> · Livraison offerte · Paiement en 3×</p>
+    <a href="#pack" class="btn btn--cta">Je commande mon pack</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b class="logo" style="color:#fff;font-size:1.2rem">Movéa<span>.</span></b> &nbsp;© <span data-year></span></span>
+    <span><a href="#">CGV</a><a href="#">Retours</a><a href="#">Garantie</a><a href="#">Confidentialité</a><a href="mailto:contact@exemple.com">Contact</a></span>
+  </div>
+</footer>
+
+<div class="sticky" data-sticky><div><b>Pack Bureau actif</b><br><span data-pack-price>--</span> <s data-pack-compare>--</s></div><a href="#pack" class="btn btn--cta">Choisir</a></div>
+
+<div class="ov" data-ov></div>
+<aside class="drawer" data-drawer aria-label="Panier">
+  <div class="drawer__h"><h3>Votre panier</h3><button data-close aria-label="Fermer">✕</button></div>
+  <div class="drawer__ship">🎉 Livraison offerte sur votre commande</div>
+  <div class="drawer__items" data-items></div>
+  <div class="drawer__f">
+    <div class="drawer__t"><span>Total</span><b data-cart-total>0 €</b></div>
+    <p class="drawer__k" data-cart-x3></p>
+    <button class="btn btn--cta btn--xl" data-checkout>Commander en toute sécurité 🔒</button>
+  </div>
+</aside>
+<div class="toast" data-toast></div>
+
+<script>
+/* =====================================================================
+   CONFIGURATION — à compléter avec les réponses des fournisseurs
+   (voir questions-fournisseurs.md). « tbc: true » = affiché « à confirmer ».
+   ===================================================================== */
+const CONFIG = {
+  brand: 'Movéa',
+  desk: { min: 72, max: 125, tbc: true },     // hauteur plateau (cm)
+  padHeight: 13,                               // épaisseur du tapis (cm)
+  prices: { desk: 399, pad: 329 },             // prix à l'unité (servent au prix barré du pack)
+  offers: [
+    { id: 'pack', title: 'Pack Bureau actif', sub: 'Bureau électrique + tapis de marche', price: 549, items: ['desk', 'pad'], tag: 'Le plus choisi', default: true },
+    { id: 'desk', title: 'Bureau seul', sub: 'Bureau assis-debout électrique', price: 399, items: ['desk'] },
+    { id: 'pad', title: 'Tapis de marche seul', sub: 'Se glisse sous votre bureau actuel*', price: 329, items: ['pad'] },
+  ],
+  sizes: [ { id: '120', name: '120 × 60 cm', extra: 0 }, { id: '140', name: '140 × 70 cm', extra: 30 } ],
+  colors: [
+    { id: 'chene', name: 'Chêne clair / cadre blanc', top: '#d9b88a', frame: '#f2f2f0', c: '#d9b88a' },
+    { id: 'noyer', name: 'Noyer / cadre noir', top: '#7a5234', frame: '#2b2b2b', c: '#7a5234' },
+    { id: 'noir', name: 'Noir / cadre noir', top: '#2f3033', frame: '#1d1d1f', c: '#2f3033' },
+  ],
+  addons: [
+    { id: 'mat', name: 'Tapis anti-fatigue', sub: 'Pour les moments debout', price: 39 },
+    { id: 'cable', name: 'Goulotte passe-câbles', sub: 'Des câbles qui suivent le bureau', price: 19 },
+  ],
+  deliveryDays: [3, 7],
+  checkoutUrl: '',
+  tabs: [
+    { title: 'Bureau', rows: [
+      ['Hauteur', '72 – 125 cm', true], ['Plateau', '120 × 60 cm ou 140 × 70 cm', true], ['Moteur', 'Double moteur', true],
+      ['Charge max.', '100 kg', true], ['Mémoires', '3 hauteurs mémorisées', true], ['Sécurité', 'Anti-collision', true], ['Bruit', 'À compléter', true],
+    ] },
+    { title: 'Tapis de marche', rows: [
+      ['Vitesse', '1 – 6 km/h', true], ['Épaisseur', '13 cm', true], ['Charge max.', '120 kg', true], ['Commande', 'Télécommande + écran pas / distance / temps', true],
+      ['Bruit', 'À compléter', true], ['Rangement', 'Roulettes, se glisse sous un lit', true],
+    ] },
+    { title: 'Dans les colis', list: ['Colis 1 : bureau (cadre, plateau, moteurs, télécommande, visserie, outils, notice)', 'Colis 2 : tapis de marche pré-assemblé, télécommande, câble d\'alimentation', 'Accessoires éventuels dans un colis séparé'] },
+    { title: 'Livraison & garantie', list: ['Livraison offerte en Belgique, France et Pays-Bas', '2 colis avec suivi', '30 jours pour essayer', 'Garantie légale de 2 ans sur le bureau et le tapis'] },
+  ],
+  reviews: [],   // Uniquement de vrais avis : { name, stars, text }
+};
+
+/* ===================================================================== */
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const eur = (n) => n.toLocaleString('fr-BE', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' €';
+const state = { offer: CONFIG.offers.find(o => o.default).id, size: CONFIG.sizes[0].id, color: CONFIG.colors[0].id, addons: new Set(), cart: [] };
+try { state.cart = JSON.parse(localStorage.getItem('movea-cart')) || []; } catch {}
+
+/* ---------- Illustration (SVG) ---------- */
+function illu() {
+  return `<svg viewBox="0 0 600 420" role="img" aria-label="Bureau assis-debout avec tapis de marche">
+    <defs>
+      <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfaf7" stop-opacity="0"/><stop offset="1" stop-color="#e9e2d6"/></linearGradient>
+      <linearGradient id="col" x1="0" x2="1"><stop offset="0" stop-color="var(--frame-d)"/><stop offset=".5" stop-color="var(--frame)"/><stop offset="1" stop-color="var(--frame-d)"/></linearGradient>
+    </defs>
+    <rect x="0" y="0" width="600" height="420" fill="url(#wall)"/>
+    <rect x="0" y="372" width="600" height="48" fill="#ddd3c4"/>
+    <!-- plante -->
+    <g transform="translate(520 300)"><rect x="-18" y="40" width="36" height="34" rx="6" fill="#c9b79c"/><path d="M0 40 C-30 10 -26 -20 -6 -34 C-2 -10 0 10 0 40Z" fill="#3f7a5d"/><path d="M0 40 C26 6 30 -18 12 -30 C8 -6 4 14 0 40Z" fill="#2f644b"/><path d="M0 40 C-6 0 4 -30 2 -48 C14 -26 10 10 0 40Z" fill="#4d8c6b"/></g>
+    <!-- chaise -->
+    <g class="chair" data-chair><rect x="66" y="250" width="70" height="12" rx="6" fill="#3a3f3c"/><rect x="72" y="176" width="58" height="70" rx="14" fill="#4b524e"/><rect x="97" y="262" width="8" height="70" fill="#8a8f8c"/><path d="M70 346 L101 330 L132 346" stroke="#8a8f8c" stroke-width="6" fill="none" stroke-linecap="round"/></g>
+    <!-- pieds du bureau -->
+    <g fill="url(#col)"><rect x="168" y="364" width="74" height="10" rx="5"/><rect x="378" y="364" width="74" height="10" rx="5"/>
+      <rect x="196" y="282" width="18" height="84" rx="3"/><rect x="406" y="282" width="18" height="84" rx="3"/></g>
+    <!-- partie mobile -->
+    <g class="desk-inner" data-move><rect x="199" y="210" width="12" height="160" rx="2" fill="url(#col)"/><rect x="409" y="210" width="12" height="160" rx="2" fill="url(#col)"/></g>
+    <g class="desk-top" data-move><g transform="translate(0 60)">
+      <rect x="150" y="140" width="320" height="14" rx="4" fill="var(--top)"/>
+      <rect x="150" y="152" width="320" height="4" fill="#000" opacity=".12"/>
+      <rect x="440" y="156" width="22" height="8" rx="2" fill="#2a2d2b"/><circle cx="446" cy="160" r="1.6" fill="#7fe0a0"/>
+      <!-- écran + laptop -->
+      <rect x="262" y="70" width="110" height="66" rx="6" fill="#222624"/><rect x="267" y="75" width="100" height="56" rx="3" fill="#bcd7cb"/>
+      <rect x="275" y="84" width="54" height="5" rx="2" fill="#fff" opacity=".8"/><rect x="275" y="94" width="78" height="4" rx="2" fill="#fff" opacity=".55"/><rect x="275" y="102" width="66" height="4" rx="2" fill="#fff" opacity=".55"/>
+      <rect x="310" y="136" width="14" height="5" fill="#222624"/><rect x="232" y="132" width="56" height="6" rx="3" fill="#cfcfcb"/>
+      <rect x="392" y="118" width="16" height="22" rx="4" fill="#e8743b"/><rect x="408" y="123" width="6" height="10" rx="3" fill="none" stroke="#e8743b" stroke-width="3"/>
+    </g></g>
+    <!-- tapis de marche -->
+    <g class="pad" data-pad>
+      <rect x="196" y="346" width="230" height="26" rx="10" fill="#2b302d"/>
+      <rect x="204" y="344" width="214" height="8" rx="4" fill="#3c423e"/>
+      <line class="belt" x1="210" y1="348" x2="412" y2="348" stroke="#5c645f" stroke-width="4" stroke-linecap="round"/>
+      <rect x="404" y="350" width="22" height="12" rx="4" fill="#1d211f"/><rect x="408" y="353" width="12" height="5" rx="1" fill="#7fe0a0" opacity=".9"/>
+      <circle cx="210" cy="373" r="4" fill="#1d211f"/><circle cx="412" cy="373" r="4" fill="#1d211f"/>
+    </g>
+    <!-- baskets en marche -->
+    <g data-walker opacity="0">
+      <g class="leg1"><path d="M270 344 q0 -12 14 -12 l10 0 q6 0 8 6 l10 4 q6 2 6 8 l-48 0z" fill="#fff" stroke="#cfcac0"/><path d="M270 344 l48 0" stroke="#e8743b" stroke-width="3"/></g>
+      <g class="leg2"><path d="M300 344 q0 -12 14 -12 l10 0 q6 0 8 6 l10 4 q6 2 6 8 l-48 0z" fill="#fff" stroke="#cfcac0"/><path d="M300 344 l48 0" stroke="#e8743b" stroke-width="3"/></g>
+    </g>
+  </svg>`;
+}
+const MODES = { assis: 0, debout: 1, marche: 2 };
+function setupScene(scene) {
+  scene.querySelector('[data-illu]').innerHTML = illu();
+  const apply = (mode) => {
+    const h = deskFor(mode), svg = $('svg', scene);
+    // 72 cm ↔ y=0 ; 125 cm ↔ y=-82 (échelle visuelle)
+    const dy = -(h - 72) / (125 - 72) * 82;
+    $$('[data-move]', svg).forEach(g => g.style.transform = `translateY(${dy}px)`);
+    $('[data-pad]', svg).style.opacity = mode === 'assis' ? .25 : 1;
+    $('[data-chair]', svg).style.opacity = mode === 'assis' ? 1 : 0;
+    $('[data-chair]', svg).style.transform = mode === 'assis' ? 'none' : 'translateX(-30px)';
+    $('[data-walker]', svg).setAttribute('opacity', mode === 'marche' ? 1 : 0);
+    scene.classList.toggle('walking', mode === 'marche');
+    $$('[data-mode]', scene).forEach(b => b.classList.toggle('on', b.dataset.mode === mode));
+    const hb = $('[data-height]', scene); if (hb) hb.textContent = `${h} cm`;
+    scene._mode = mode;
+  };
+  $$('[data-mode]', scene).forEach(b => b.addEventListener('click', () => { scene._user = true; apply(b.dataset.mode); }));
+  apply('marche');
+  return apply;
+}
+function deskFor(mode, height = 175) {
+  const elbowSit = Math.round(height * 0.415), elbowStand = Math.round(height * 0.62);
+  return mode === 'assis' ? Math.max(CONFIG.desk.min, elbowSit) : mode === 'debout' ? elbowStand : elbowStand + CONFIG.padHeight;
+}
+
+/* ---------- Prix & boutique ---------- */
+const offer = () => CONFIG.offers.find(o => o.id === state.offer);
+const hasDesk = () => offer().items.includes('desk');
+const sizeExtra = () => hasDesk() ? CONFIG.sizes.find(s => s.id === state.size).extra : 0;
+const compareOf = (o) => o.items.reduce((s, k) => s + CONFIG.prices[k], 0);
+const addonsTotal = () => CONFIG.addons.filter(a => state.addons.has(a.id)).reduce((s, a) => s + a.price, 0);
+const lineTotal = () => offer().price + sizeExtra() + addonsTotal();
+
+function renderShop() {
+  $('[data-offers]').innerHTML = CONFIG.offers.map(o => {
+    const cmp = compareOf(o), save = cmp - o.price;
+    return `<button class="offer ${o.id === state.offer ? 'on' : ''}" data-offer="${o.id}">${o.tag ? `<span class="offer__tag">${o.tag}</span>` : ''}
+      <span class="offer__radio"></span><span><span class="offer__t">${o.title}</span><span class="offer__s">${o.sub}</span></span>
+      <span class="offer__p">${eur(o.price)}${save > 0 ? `<s>${eur(cmp)}</s><small>−${eur(save)}</small>` : ''}</span></button>`;
+  }).join('');
+  $('[data-g-size]').hidden = !hasDesk(); $('[data-g-color]').hidden = !hasDesk();
+  $('[data-sizes]').innerHTML = CONFIG.sizes.map(s => `<button class="${s.id === state.size ? 'on' : ''}" data-size="${s.id}">${s.name}${s.extra ? ` <small>+${eur(s.extra)}</small>` : ''}</button>`).join('');
+  $('[data-colors]').innerHTML = CONFIG.colors.map(c => `<button class="${c.id === state.color ? 'on' : ''}" data-color="${c.id}" style="--c:${c.c}"><i></i>${c.name.split(' /')[0]}</button>`).join('');
+  $('[data-size-name]').textContent = CONFIG.sizes.find(s => s.id === state.size).name;
+  $('[data-color-name]').textContent = CONFIG.colors.find(c => c.id === state.color).name;
+  $('[data-addons]').innerHTML = CONFIG.addons.map(a => `<label class="addon"><input type="checkbox" data-addon="${a.id}" ${state.addons.has(a.id) ? 'checked' : ''}><span>${a.name}<small>${a.sub}</small></span><b>+${eur(a.price)}</b></label>`).join('');
+  const o = offer(), cmp = compareOf(o) + sizeExtra(), price = o.price + sizeExtra(), save = cmp - price;
+  $('[data-price]').textContent = eur(price);
+  $('[data-compare]').textContent = save > 0 ? eur(cmp) : '';
+  $('[data-save]').textContent = save > 0 ? `Économisez ${eur(save)}` : '';
+  $('[data-save]').hidden = !(save > 0);
+  $('[data-x3]').textContent = eur(Math.round(lineTotal() / 3 * 100) / 100);
+  $('[data-total]').textContent = eur(lineTotal());
+  $$('[data-offer]').forEach(b => b.onclick = () => { state.offer = b.dataset.offer; renderShop(); });
+  $$('[data-size]').forEach(b => b.onclick = () => { state.size = b.dataset.size; renderShop(); });
+  $$('[data-color]').forEach(b => b.onclick = () => { state.color = b.dataset.color; paint(); renderShop(); });
+  $$('[data-addon]').forEach(i => i.onchange = () => { i.checked ? state.addons.add(i.dataset.addon) : state.addons.delete(i.dataset.addon); renderShop(); });
+}
+function paint() {
+  const c = CONFIG.colors.find(c => c.id === state.color);
+  $$('.scene').forEach(s => { s.style.setProperty('--top', c.top); s.style.setProperty('--frame', c.frame); s.style.setProperty('--frame-d', c.frame === '#f2f2f0' ? '#c9c9c5' : '#111'); });
+}
+function renderGlobalPrices() {
+  const p = CONFIG.offers.find(o => o.id === 'pack'), cmp = compareOf(p);
+  $$('[data-pack-price]').forEach(e => e.textContent = eur(p.price));
+  $$('[data-pack-compare]').forEach(e => e.textContent = eur(cmp));
+  $('[data-save-pct]').textContent = `−${Math.round((1 - p.price / cmp) * 100)} %`;
+  const add = (n) => { const d = new Date(); while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) n--; } return d.toLocaleDateString('fr-BE', { weekday: 'short', day: 'numeric', month: 'short' }); };
+  $('[data-eta]').textContent = `${add(CONFIG.deliveryDays[0])} et le ${add(CONFIG.deliveryDays[1])}`;
+  $('[data-year]').textContent = new Date().getFullYear();
+}
+
+/* ---------- Outils ---------- */
+function initTools() {
+  const v = { h: 175, m: 45, v: 3, w: 75 };
+  const MET = (k) => k < 2.7 ? 2.0 : k < 3.5 ? 2.8 : k < 4.3 ? 3.0 : 3.5;
+  const upd = () => {
+    $('[data-o="h"]').textContent = `${v.h} cm`; $('[data-o="m"]').textContent = `${v.m} min`;
+    $('[data-o="v"]').textContent = `${String(v.v).replace('.', ',')} km/h`; $('[data-o="w"]').textContent = `${v.w} kg`;
+    const sit = deskFor('assis', v.h), stand = deskFor('debout', v.h), walk = deskFor('marche', v.h);
+    $('[data-r="sit"]').textContent = `${sit} cm`; $('[data-r="stand"]').textContent = `${stand} cm`; $('[data-r="walk"]').textContent = `${walk} cm`;
+    const pos = (x) => (x - 60) / (135 - 60) * 100, d = CONFIG.desk;
+    $('[data-r="range"]').style.left = pos(d.min) + '%'; $('[data-r="range"]').style.width = (pos(d.max) - pos(d.min)) + '%';
+    $('[data-r="pin"]').style.left = Math.min(100, Math.max(0, pos(walk))) + '%';
+    $('[data-r="rangeLab"]').textContent = `Bureau : ${d.min} – ${d.max} cm${d.tbc ? ' (à confirmer)' : ''}`;
+    const ok = walk <= d.max && sit >= d.min - 2, vd = $('[data-r="verdict"]');
+    vd.className = 'verdict ' + (ok ? 'ok' : 'ko');
+    vd.textContent = ok ? `✓ Compatible : le bureau monte jusqu'à ${d.max} cm, il vous en faut ${walk} en marchant.` : `⚠ Il vous faudrait ${walk} cm en marchant, au-delà des ${d.max} cm du bureau. Écrivez-nous avant de commander.`;
+    const stride = 175 * 0.415 / 100, dist = v.v * 1000 / 60 * v.m;
+    $('[data-r="steps"]').textContent = Math.round(dist / stride / 100) * 100 >= 1000 ? (Math.round(dist / stride / 100) * 100).toLocaleString('fr-BE') : Math.round(dist / stride);
+    $('[data-r="km"]').textContent = (dist / 1000 * 5).toFixed(1).replace('.', ',');
+    $('[data-r="kcal"]').textContent = Math.round(MET(v.v) * v.w * (v.m / 60) * 5).toLocaleString('fr-BE');
+  };
+  $$('[data-c]').forEach(i => i.addEventListener('input', () => { v[i.dataset.c] = +i.value; upd(); }));
+  upd();
+}
+
+/* ---------- Onglets, avis ---------- */
+function initTabs() {
+  const tabs = CONFIG.tabs, render = (t) => t.rows
+    ? `<table>${t.rows.map(([k, val, tbc]) => `<tr><td>${k}</td><td>${val}${tbc ? '<span class="tbc">à confirmer</span>' : ''}</td></tr>`).join('')}</table>`
+    : `<ul>${t.list.map(l => `<li>${l}</li>`).join('')}</ul>`;
+  $('[data-tabs]').innerHTML = tabs.map((t, i) => `<button role="tab" aria-selected="${!i}" data-tab="${i}">${t.title}</button>`).join('');
+  const show = (i) => { $$('[data-tab]').forEach((b, j) => b.setAttribute('aria-selected', i === j)); $('[data-panel]').innerHTML = render(tabs[i]); };
+  $$('[data-tab]').forEach(b => b.onclick = () => show(+b.dataset.tab)); show(0);
+  if (CONFIG.reviews.length) {
+    $('[data-reviews-sec]').hidden = false;
+    const avg = CONFIG.reviews.reduce((s, r) => s + r.stars, 0) / CONFIG.reviews.length;
+    const r = $('[data-rating]'); r.hidden = false; r.textContent = `★ ${avg.toFixed(1).replace('.', ',')}/5 · ${CONFIG.reviews.length} avis`;
+    $('[data-reviews]').innerHTML = CONFIG.reviews.map(x => `<div class="card" style="padding:20px;margin-top:14px"><b style="color:var(--gold)">${'★'.repeat(x.stars)}</b><p>${x.text}</p><small>${x.name}</small></div>`).join('');
+  }
+}
+
+/* ---------- Panier ---------- */
+const save = () => { try { localStorage.setItem('movea-cart', JSON.stringify(state.cart)); } catch {} renderCart(); };
+function renderCart() {
+  $('[data-count]').textContent = state.cart.length;
+  $('[data-items]').innerHTML = state.cart.length ? state.cart.map((l, i) => `<div class="line"><div>${l.name}<small>${l.detail}</small></div><div><b>${eur(l.price)}</b><button data-rm="${i}">Retirer</button></div></div>`).join('') : '<p style="padding:30px 0;text-align:center;color:var(--muted)">Votre panier est vide.</p>';
+  const t = state.cart.reduce((s, l) => s + l.price, 0);
+  $('[data-cart-total]').textContent = eur(t);
+  $('[data-cart-x3]').textContent = t ? `ou 3 × ${eur(Math.round(t / 3 * 100) / 100)} sans frais` : '';
+  $$('[data-rm]').forEach(b => b.onclick = () => { state.cart.splice(+b.dataset.rm, 1); save(); });
+}
+const openCart = (on = true) => { $('[data-drawer]').classList.toggle('on', on); $('[data-ov]').classList.toggle('on', on); };
+const toast = (m) => { const t = $('[data-toast]'); t.textContent = m; t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2600); };
+function initCart() {
+  $('[data-add]').onclick = () => {
+    const o = offer(), parts = [];
+    if (hasDesk()) parts.push(CONFIG.sizes.find(s => s.id === state.size).name, CONFIG.colors.find(c => c.id === state.color).name);
+    state.cart.push({ name: `${CONFIG.brand} — ${o.title}`, detail: parts.join(' · ') || o.sub, price: o.price + sizeExtra() });
+    CONFIG.addons.filter(a => state.addons.has(a.id)).forEach(a => state.cart.push({ name: a.name, detail: 'Accessoire', price: a.price }));
+    save(); openCart();
+  };
+  $('[data-open-cart]').onclick = () => openCart(); $('[data-close]').onclick = () => openCart(false); $('[data-ov]').onclick = () => openCart(false);
+  document.addEventListener('keydown', e => e.key === 'Escape' && openCart(false));
+  $('[data-checkout]').onclick = () => !state.cart.length ? toast('Votre panier est vide') : CONFIG.checkoutUrl ? location.href = CONFIG.checkoutUrl : toast('Mode démo : ajoutez votre lien de paiement dans CONFIG.checkoutUrl');
+  renderCart();
+}
+
+/* ---------- Démarrage ---------- */
+const hero = $('[data-scene="hero"]'), shopScene = $('[data-scene="shop"]');
+const applyHero = setupScene(hero); setupScene(shopScene);
+paint(); renderShop(); renderGlobalPrices(); initTools(); initTabs(); initCart();
+// Le hero enchaîne les 3 positions tant que le visiteur n'a pas cliqué
+const seq = ['assis', 'debout', 'marche']; let si = 2;
+setInterval(() => { if (!hero._user && !document.hidden) { si = (si + 1) % 3; applyHero(seq[si]); } }, 3200);
+// Compteur de pas animé en mode marche
+let steps = 4180; setInterval(() => { if (hero._mode === 'marche') { steps += 2; $('[data-steps]', hero).textContent = steps.toLocaleString('fr-BE'); } }, 600);
+$('[data-steps]', hero).textContent = steps.toLocaleString('fr-BE');
+// Barre d'achat collante
+new IntersectionObserver(([e]) => $('[data-sticky]').classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe($('[data-add]'));
+</script>
+</body>
+</html>
